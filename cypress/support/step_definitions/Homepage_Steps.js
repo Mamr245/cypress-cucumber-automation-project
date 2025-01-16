@@ -7,7 +7,7 @@ Given(`I navigate to the ParaBank website`, () => {
     homePage.navigateToHomepage();
 })
 
-When(`I click on the register button`, () => {
+When(`I click on the register link`, () => {
     homePage.clickOnRegisterButton();
 })
 
