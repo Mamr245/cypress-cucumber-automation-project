@@ -54,9 +54,16 @@ class Register_PO extends Base_PO {
         const middleDigits = Math.floor(Math.random() * 99).toString();
         const lastFourDigits = Math.floor(Math.random() * 9999).toString();
 
-        const ssn = firstThreeDigits + "-" + middleDigits + "-" + lastFourDigits
-        return ssn
+        const ssn = firstThreeDigits + "-" + middleDigits + "-" + lastFourDigits;
+        return ssn;
     }
 
+    /* Workaround because demo site does not save credentials
+    We save the inputed credentials while creating an account and read that file when performing the login tests
+    */
+    saveUserData(username, password, firstName, lastName) {
+        cy.writeFile('cypress/fixtures/credentials.json', { 
+            username: username, password: password, firstName: firstName, lastName: lastName })
+    }
 }
 export default Register_PO;

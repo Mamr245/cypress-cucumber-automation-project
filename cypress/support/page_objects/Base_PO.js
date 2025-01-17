@@ -1,4 +1,4 @@
-class Base_PO {    
+class Base_PO {
     navigateToHomepage() {
         cy.fixture("config.json").then((data) => {
             cy.visit(data.baseURL)
@@ -9,5 +9,4 @@ class Base_PO {
         return cy.title();
     }
 }
-
 export default Base_PO;
