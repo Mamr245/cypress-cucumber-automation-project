@@ -62,7 +62,7 @@ class Register_PO extends Base_PO {
     We save the inputed credentials while creating an account and read that file when performing the login tests
     */
     saveUserData(username, password, firstName, lastName) {
-        cy.writeFile('cypress/fixtures/credentials.json', { 
+        cy.writeFile('cypress/fixtures/userData.json', { 
             username: username, password: password, firstName: firstName, lastName: lastName })
     }
 }

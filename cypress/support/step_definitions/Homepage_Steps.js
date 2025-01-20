@@ -7,7 +7,7 @@ const homePage = new Homepage_PO();
 This file is generated while creating an account.
 Right after that the login tests are performed using the data written to the created file
 */
-const credentialsFile = 'credentials.json' 
+const userData = 'userData.json' 
 
 Given(`I navigate to the ParaBank website`, () => {
     homePage.navigateToHomepage();
@@ -22,26 +22,34 @@ When(`I click on the Log In button`, () => {
 })
 
 When(`I type a valid username`, () => {
-    cy.fixture(credentialsFile).then((userCredentials)  => {
-        homePage.typeUsername(userCredentials.username);
+    cy.fixture(userData).then((data)  => {
+        homePage.typeUsername(data.username);
     })
+})
+
+When(`I type an invalid username`, () => {
+    homePage.typeUsername("WrongUsername");
 })
 
 When(`I type a valid password`, () => {
-    cy.fixture(credentialsFile).then((userCredentials)  => {
-        homePage.typePassword(userCredentials.password);
+    cy.fixture(userData).then((data)  => {
+        homePage.typePassword(data.password);
     })
+})
+
+When(`I type an invalid password`, () => {
+    homePage.typePassword("WrongUsername");
 })
 
 Then(`I should be able to access my account`, () => {
-    cy.fixture(credentialsFile).then((userCredentials)  => {
+    cy.fixture(userData).then((data)  => {
         cy.get('#leftPanel > p').contains('Welcome');
-        cy.get('#leftPanel > p').contains(userCredentials.firstName + ' ' + userCredentials.lastName);
+        cy.get('#leftPanel > p').contains(data.firstName + ' ' + data.lastName);
     })
 })
 
-Then(`I should get an error`, () => {
+Then(`I should get the error {string}`, (errorMessage) => {
     cy.get('#rightPanel > h1').should('have.text', 'Error!');
-    cy.get('#rightPanel > p').should('have.text', 'Please enter a username and password.')
+    cy.get('#rightPanel > p').should('have.text', errorMessage)
 })
 
