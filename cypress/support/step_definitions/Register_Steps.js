@@ -69,5 +69,9 @@ Then(`My account should be created`, () => {
     registerPage.saveUserData(username, password, firstName, lastName)
 })
 
+Then(`I should get the error message {string}`, (errorMessage) => {
+    cy.get('.error').should('have.text', errorMessage);
+})
+
 
 
