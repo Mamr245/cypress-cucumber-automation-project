@@ -1,0 +1,42 @@
+Feature: ParaBank - Account Services feature
+
+    Background: Pre conditions
+        Given I navigate to the ParaBank website
+        When I type a valid username
+        And I type a valid password
+        And I click on the Log In button
+    
+    Scenario: Account Overview
+        Then I should be able to view my account overview
+    
+    Scenario: Open New Checking Account
+        And I click on the Open New Account button
+        And I select the Checking option
+        And I click on the Open New Account button
+        Then A succes message and my new account number are shown
+        And The new account is visible in the account overview
+
+    Scenario: Open New Savings Account
+        And I click on the Open New Account button
+        And I select the Savings option
+        And I click on the Open New Account button
+        Then A succes message and my new account number are shown
+        And The new account is visible in the account overview
+
+    Scenario: Transfer Funds
+        And I click on the Transfer Funds button
+        And I type a valid amount
+        And I select a from account
+        And I select a to account
+        And I click on the Transfer button
+        Then A succes message with the transfer information is shown
+        And The updated account values are shown in the account overview 
+
+    Scenario: Transfer Funds to same account
+    # Tem de falhar
+
+    Scenario: Transfer Funds with insuficient funds
+    # Tem de falhar
+
+    Scenario: Open New Account with insuficient funds
+    # Tem de falhar
