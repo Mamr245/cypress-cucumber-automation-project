@@ -29,7 +29,7 @@ Feature: ParaBank - Account Services feature
 
     Scenario: Transfer Funds
         And I click on the Transfer Funds button
-        And I type a valid amount
+        And I type a valid amount to transfer
         And I select a from account
         And I select a to account
         And I click on the Transfer button
