@@ -50,6 +50,13 @@ Then(`I should be able to access my account`, () => {
 
 Then(`I should get the error {string}`, (errorMessage) => {
     cy.get('#rightPanel > h1').should('have.text', 'Error!');
-    cy.get('#rightPanel > p').should('have.text', errorMessage)
+    cy.get('#rightPanel > p').should('have.text', errorMessage);
 })
 
+Then(`I should be logged out`, () => {
+    cy.fixture("config.json").then((data) => {
+        cy.url().should('include', data.baseURL);
+    })
+})
+
+ 

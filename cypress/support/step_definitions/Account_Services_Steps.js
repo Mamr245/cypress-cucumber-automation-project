@@ -1,5 +1,6 @@
 import { When, Then }  from "@badeball/cypress-cucumber-preprocessor";
 import AccountServices_PO from "../page_objects/AccountServices_PO";
+import Homepage_PO from "../page_objects/Homepage_PO";
 
 
 const accountServicesPage = new AccountServices_PO();
@@ -44,6 +45,10 @@ When(`The new account is visible in the account overview`, () => {
 When(`It has the right amount of money`, () => {
     cy.get(`a[href*="${newAccountNumber}"]`).parent().siblings().first().should('have.text', '$100.00');
     cy.get(`a[href*="${newAccountNumber}"]`).parent().siblings().last().should('have.text', '$100.00');
+})
+
+When(`I click on the Log Out link`, () => {
+    accountServicesPage.clickLogOutButton();
 })
 
 Then(`A success message and my new account number are shown`, () => {
