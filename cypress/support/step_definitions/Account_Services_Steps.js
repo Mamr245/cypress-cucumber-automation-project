@@ -46,7 +46,7 @@ When(`It has the right amount of money`, () => {
     cy.get(`a[href*="${newAccountNumber}"]`).parent().siblings().last().should('have.text', '$100.00');
 })
 
-Then(`A succes message and my new account number are shown`, () => {
+Then(`A success message and my new account number are shown`, () => {
     cy.get('#openAccountResult > h1').should('have.text', 'Account Opened!');
     cy.get('#openAccountResult').contains('Congratulations, your account is now open.');
     cy.get('#openAccountResult').contains('Your new account number:');
