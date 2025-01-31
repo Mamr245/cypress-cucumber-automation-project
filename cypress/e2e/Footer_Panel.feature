@@ -6,7 +6,7 @@ Feature: ParaBank - Footer Panel feature
     Scenario: About Us
         When I click on the About Us link in the footer panel
         Then I am presented with information about ParaBank
-
+        
     Scenario: Services
         When I click on the Services link in the footer panel
         Then I can view the available Bookstore SOAP services
@@ -34,4 +34,5 @@ Feature: ParaBank - Footer Panel feature
     Scenario: Contact Us
         When I click on the Contact Us link in the footer panel
         Then A customer care section with a form is presented
-        
+
+

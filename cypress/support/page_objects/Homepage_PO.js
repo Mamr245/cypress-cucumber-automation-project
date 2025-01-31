@@ -1,7 +1,7 @@
 import Base_PO from "./Base_PO";
 
 class Homepage_PO extends Base_PO {
-    clickOnRegisterButton() {
+    clickOnRegisterLink() {
         cy.get('a[href*="register"]').click()
     }
 
@@ -16,5 +16,9 @@ class Homepage_PO extends Base_PO {
     typePassword(password) {
         cy.get('input[name="password"]').type(password);
     }
+
+    clickAboutUsLink() {
+        cy.get('#footerPanel').find('a[href*="about"]').click()
+    } 
 }
 export default Homepage_PO;
