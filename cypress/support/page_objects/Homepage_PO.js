@@ -32,5 +32,9 @@ class Homepage_PO extends Base_PO {
     clickForumLink() {
         cy.get('#footerPanel').find('a[href*="forums"]').click()
     } 
+
+    clickContactUsLink() {
+        cy.get('#footerPanel').find('a[href*="contact.htm"]').click()
+    } 
 }
 export default Homepage_PO;
