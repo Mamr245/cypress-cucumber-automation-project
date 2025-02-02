@@ -36,5 +36,9 @@ class Homepage_PO extends Base_PO {
     clickContactUsLink() {
         cy.get('#footerPanel').find('a[href*="contact.htm"]').click()
     } 
+
+    clickSiteMapLink() {
+        cy.get('#footerPanel').find('a[href*="sitemap"]').click()
+    } 
 }
 export default Homepage_PO;

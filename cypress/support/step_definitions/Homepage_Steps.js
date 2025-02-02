@@ -37,6 +37,10 @@ When(`I click on the Contact Us link in the footer panel`, () => {
     homePage.clickContactUsLink();
 })
 
+When(`I click on the Site Map link in the footer panel`, () => {
+    homePage.clickSiteMapLink();
+})
+
 When(`I click on the Log In button`, () => {
     homePage.clickOnLoginButton();
 })
@@ -107,5 +111,34 @@ Then(`A customer care section with a form is presented`, () => {
     cy.get('#rightPanel > h1').contains('Customer Care');
     cy.get('#rightPanel > p').contains('Email support is available by filling out the following form.');
     cy.get('#contactForm').should('be.visible');
+})
+
+Then(`I can view the ParaBank's website structure`, () => {
+    const solutions = [
+        "About Us",
+        "Services",
+        "Products",
+        "Locations",
+        "Admin Page"
+    ]
+
+    const accountServices = [
+        "Open New Account",
+        "Accounts Overview",
+        "Transfer Funds",
+        "Bill Pay",
+        "Find Transactions",
+        "Update Contact Info",
+        "Request Loan",
+        "Log Out",
+    ]
+
+    for(const solution of solutions) {
+        cy.get('#rightPanel > ul[class="leftmenu"]').contains('a', solution)
+    }
+
+    for(const accountService of accountServices) {
+        cy.get('#rightPanel').contains('a', accountService)
+    }
 })
  
