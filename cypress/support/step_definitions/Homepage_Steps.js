@@ -50,7 +50,7 @@ When(`I click on the Log In button`, () => {
 })
 
 When(`I type a valid username`, () => {
-    cy.fixture(userData).then((data)  => {
+    cy.fixture(homePage.userData).then((data)  => {
         homePage.typeUsername(data.username);
     })
 })
@@ -60,102 +60,13 @@ When(`I type an invalid username`, () => {
 })
 
 When(`I type a valid password`, () => {
-    cy.fixture(userData).then((data)  => {
+    cy.fixture(homePage.userData).then((data)  => {
         homePage.typePassword(data.password);
     })
 })
 
 When(`I type an invalid password`, () => {
     homePage.typePassword("WrongUsername");
-})
-
-When(`I can view the available Bookstore services`, () => {
-    const bookstoreServices = [
-        "getItemById",
-        "getItemByTitle",
-        "addItemToCart",
-        "getItemsInCart",
-        "updateItemInCart",
-        "submitOrder",
-        "addNewItemToInventory"
-    ]
-
-    cy.get('span[class="heading"]').contains('Bookstore services:')
-    for(const bookstoreService of bookstoreServices) {
-        cy.get('#rightPanel').contains('td', bookstoreService);
-    }
-})
-
-
-When(`I can view the available ParaBank SOAP services`, () => {
-    const paraBankSOAPservices = [
-        "LoanProcessorService",
-        "ParaBankService"
-    ]
-
-    cy.get('span[class="heading"]').contains('Available ParaBank SOAP services:')
-    for(const paraBankSOAPservice of paraBankSOAPservices) {
-        cy.get('#rightPanel').contains('span[class="porttypename"]', paraBankSOAPservice);
-    }
-})
-
-When(`I can view the available ParaBank services`, () => {
-    const parabankServices = [
-        "getAccount",
-        "buyPosition",
-        "deposit",
-        "startupJmsListener",
-        "shutdownJmsListener",
-        "sellPosition",
-        "login",
-        "getCustomer",
-        "getAccounts",
-        "setParameter",
-        "getPositionHistory",
-        "requestLoan",
-        "cleanDB",
-        "withdraw",
-        "getPosition",
-        "initializeDB",
-        "getTransaction",
-        "getPositions",
-        "getTransactions",
-        "transfer",
-        "createAccount",
-        "getTransactionsOnDate",
-        "getTransactionsByToFromDate",
-        "getTransactionsByAmount",
-        "updateCustomer",
-    ]
-
-    cy.get('span[class="heading"]').contains('ParaBank services:')
-    for(const parabankService of parabankServices) {
-        cy.get('#rightPanel').contains('td', parabankService);
-    }
-})
-
-When(`I can view the available RESTful services`, () => {
-    const fields = [
-        "Endpoint address",
-        "WADL",
-        "OpenAPI"
-    ]
-
-    cy.get('span[class="heading"]').contains('Available RESTful services:')
-    for(const field of fields) {
-        cy.get('#rightPanel').contains('span[class="field"]', field);
-    }
-
-    cy.get('span[class="value"]').contains('http://parabank.parasoft.com:8080/parabank/services/bank');
-    cy.get('#rightPanel').contains('a', 'http://parabank.parasoft.com:8080/parabank/services/bank?_wadl&type=xml');
-    cy.get('#rightPanel').contains('a', 'http://parabank.parasoft.com:8080/parabank/api-docs/index.html');
-})
-
-Then(`I should be able to access my account`, () => {
-    cy.fixture(userData).then((data)  => {
-        cy.get('#leftPanel > p').contains('Welcome');
-        cy.get('#leftPanel > p').contains(data.firstName + ' ' + data.lastName);
-    })
 })
 
 Then(`I should get the error {string}`, (errorMessage) => {
@@ -169,17 +80,6 @@ Then(`I should be logged out`, () => {
     })
 })
 
-Then(`I am presented with information about ParaBank`, () => {
-    cy.get('#rightPanel > h1').should('have.text', 'ParaSoft Demo Website');
-    cy.get('#rightPanel').contains('ParaBank is a demo site used for demonstration of Parasoft software solutions.');
-    cy.get('#rightPanel').contains('All materials herein are used solely for simulating a realistic online banking website.');
-    cy.get('#rightPanel').contains('In other words: ParaBank is not a real bank!');
-    cy.get('#rightPanel').contains('For more information about Parasoft solutions please visit us at:');
-    cy.get('#rightPanel').contains('888-305-0041');
-    cy.get('#rightPanel').find('a[href="http://www.parasoft.com/"]').click();
-    cy.url().should('eq', 'https://www.parasoft.com/');
-})
-
 Then(`I am redirected to ParaBank's products website`, () => {
     cy.url().should('eq', 'https://www.parasoft.com/products/');
 })
@@ -191,59 +91,6 @@ Then(`I am redirected to ParaBank's solutions website`, () => {
 Then(`I am redirected to ParaBank's forum website`, () => {
     cy.url().should('eq', 'https://forums.parasoft.com/');
 })
-
-Then(`A customer care section with a form is presented`, () => {
-    cy.url().should('contain', 'https://parabank.parasoft.com/parabank/contact.htm');
-    cy.get('#rightPanel > h1').contains('Customer Care');
-    cy.get('#rightPanel > p').contains('Email support is available by filling out the following form.');
-    cy.get('#contactForm').should('be.visible');
-})
-
-Then(`I can view the ParaBank's website structure`, () => {
-    const solutions = [
-        "About Us",
-        "Services",
-        "Products",
-        "Locations",
-        "Admin Page"
-    ]
-
-    const accountServices = [
-        "Open New Account",
-        "Accounts Overview",
-        "Transfer Funds",
-        "Bill Pay",
-        "Find Transactions",
-        "Update Contact Info",
-        "Request Loan",
-        "Log Out",
-    ]
-
-    for(const solution of solutions) {
-        cy.get('#rightPanel > ul[class="leftmenu"]').contains('a', solution);
-    }
-
-    for(const accountService of accountServices) {
-        cy.get('#rightPanel').contains('a', accountService);
-    }
-})
-
-Then(`I can view the available Bookstore SOAP services`, () => {
-    const bookstoreSOAPservices = [
-        "Bookstore",
-        "Bookstore (Version 2.0)",
-        "(WS-Security Username Token)",
-        "(WS-Security Signature)",
-        "(WS-Security Encryption)",
-        "(WS-Security Signature and Encryption)"
-    ]
-
-    cy.get('span[class="heading"]').contains('Available Bookstore SOAP services:')
-    for(const bookstoreSOAPservice of bookstoreSOAPservices) {
-        cy.get('#rightPanel').contains('span[class="porttypename"]', bookstoreSOAPservice);
-    }
-})
-
 
  
  

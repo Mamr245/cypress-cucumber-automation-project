@@ -61,3 +61,10 @@ Then(`A success message and my new account number are shown`, () => {
     })
 })
 
+Then(`I should be able to access my account`, () => {
+    cy.fixture(accountServicesPage.userData).then((data)  => {
+        cy.get('#leftPanel > p').contains('Welcome');
+        cy.get('#leftPanel > p').contains(data.firstName + ' ' + data.lastName);
+    })
+})
+
