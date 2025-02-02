@@ -25,6 +25,14 @@ When(`I click on the Products link in the footer panel`, () => {
     homePage.clickProductsLink();
 })
 
+When(`I click on the Locations link in the footer panel`, () => {
+    homePage.clickLocationsLink();
+})
+
+When(`I click on the Forum link in the footer panel`, () => {
+    homePage.clickForumLink();
+})
+
 When(`I click on the Log In button`, () => {
     homePage.clickOnLoginButton();
 })
@@ -80,5 +88,13 @@ Then(`I am presented with information about ParaBank`, () => {
 
 Then(`I am redirected to ParaBank's products website`, () => {
     cy.url().should('eq', 'https://www.parasoft.com/products/');
+})
+
+Then(`I am redirected to ParaBank's solutions website`, () => {
+    cy.url().should('eq', 'https://www.parasoft.com/solutions/');
+})
+
+Then(`I am redirected to ParaBank's forum website`, () => {
+    cy.url().should('eq', 'https://forums.parasoft.com/');
 })
  
