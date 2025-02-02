@@ -16,7 +16,7 @@ Feature: ParaBank - Footer Panel feature
         And I can view the available RESTful services
 
     Scenario: Products
-        When I click on the Services link in the footer panel
+        When I click on the Products link in the footer panel
         Then I am redirected to ParaBank's products website
 
     Scenario: Locations

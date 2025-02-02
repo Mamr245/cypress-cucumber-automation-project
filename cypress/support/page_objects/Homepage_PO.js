@@ -19,6 +19,10 @@ class Homepage_PO extends Base_PO {
 
     clickAboutUsLink() {
         cy.get('#footerPanel').find('a[href*="about"]').click()
+    }
+    
+    clickProductsLink() {
+        cy.get('#footerPanel').find('a[href*="products"]').click()
     } 
 }
 export default Homepage_PO;

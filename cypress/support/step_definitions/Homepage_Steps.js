@@ -21,6 +21,10 @@ When(`I click on the About Us link in the footer panel`, () => {
     homePage.clickAboutUsLink();
 })
 
+When(`I click on the Products link in the footer panel`, () => {
+    homePage.clickProductsLink();
+})
+
 When(`I click on the Log In button`, () => {
     homePage.clickOnLoginButton();
 })
@@ -72,5 +76,9 @@ Then(`I am presented with information about ParaBank`, () => {
     cy.get('#rightPanel').contains('888-305-0041');
     cy.get('#rightPanel').find('a[href="http://www.parasoft.com/"]').click();
     cy.url().should('eq', 'https://www.parasoft.com/');
+})
+
+Then(`I am redirected to ParaBank's products website`, () => {
+    cy.url().should('eq', 'https://www.parasoft.com/products/');
 })
  
