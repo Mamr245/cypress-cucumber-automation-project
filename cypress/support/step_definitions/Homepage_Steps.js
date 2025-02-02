@@ -41,6 +41,10 @@ When(`I click on the Site Map link in the footer panel`, () => {
     homePage.clickSiteMapLink();
 })
 
+When(`I click on the Services link in the footer panel`, () => {
+    homePage.clickServicesLink();
+})
+
 When(`I click on the Log In button`, () => {
     homePage.clickOnLoginButton();
 })
@@ -63,6 +67,88 @@ When(`I type a valid password`, () => {
 
 When(`I type an invalid password`, () => {
     homePage.typePassword("WrongUsername");
+})
+
+When(`I can view the available Bookstore services`, () => {
+    const bookstoreServices = [
+        "getItemById",
+        "getItemByTitle",
+        "addItemToCart",
+        "getItemsInCart",
+        "updateItemInCart",
+        "submitOrder",
+        "addNewItemToInventory"
+    ]
+
+    cy.get('span[class="heading"]').contains('Bookstore services:')
+    for(const bookstoreService of bookstoreServices) {
+        cy.get('#rightPanel').contains('td', bookstoreService);
+    }
+})
+
+
+When(`I can view the available ParaBank SOAP services`, () => {
+    const paraBankSOAPservices = [
+        "LoanProcessorService",
+        "ParaBankService"
+    ]
+
+    cy.get('span[class="heading"]').contains('Available ParaBank SOAP services:')
+    for(const paraBankSOAPservice of paraBankSOAPservices) {
+        cy.get('#rightPanel').contains('span[class="porttypename"]', paraBankSOAPservice);
+    }
+})
+
+When(`I can view the available ParaBank services`, () => {
+    const parabankServices = [
+        "getAccount",
+        "buyPosition",
+        "deposit",
+        "startupJmsListener",
+        "shutdownJmsListener",
+        "sellPosition",
+        "login",
+        "getCustomer",
+        "getAccounts",
+        "setParameter",
+        "getPositionHistory",
+        "requestLoan",
+        "cleanDB",
+        "withdraw",
+        "getPosition",
+        "initializeDB",
+        "getTransaction",
+        "getPositions",
+        "getTransactions",
+        "transfer",
+        "createAccount",
+        "getTransactionsOnDate",
+        "getTransactionsByToFromDate",
+        "getTransactionsByAmount",
+        "updateCustomer",
+    ]
+
+    cy.get('span[class="heading"]').contains('ParaBank services:')
+    for(const parabankService of parabankServices) {
+        cy.get('#rightPanel').contains('td', parabankService);
+    }
+})
+
+When(`I can view the available RESTful services`, () => {
+    const fields = [
+        "Endpoint address",
+        "WADL",
+        "OpenAPI"
+    ]
+
+    cy.get('span[class="heading"]').contains('Available RESTful services:')
+    for(const field of fields) {
+        cy.get('#rightPanel').contains('span[class="field"]', field);
+    }
+
+    cy.get('span[class="value"]').contains('http://parabank.parasoft.com:8080/parabank/services/bank');
+    cy.get('#rightPanel').contains('a', 'http://parabank.parasoft.com:8080/parabank/services/bank?_wadl&type=xml');
+    cy.get('#rightPanel').contains('a', 'http://parabank.parasoft.com:8080/parabank/api-docs/index.html');
 })
 
 Then(`I should be able to access my account`, () => {
@@ -134,11 +220,30 @@ Then(`I can view the ParaBank's website structure`, () => {
     ]
 
     for(const solution of solutions) {
-        cy.get('#rightPanel > ul[class="leftmenu"]').contains('a', solution)
+        cy.get('#rightPanel > ul[class="leftmenu"]').contains('a', solution);
     }
 
     for(const accountService of accountServices) {
-        cy.get('#rightPanel').contains('a', accountService)
+        cy.get('#rightPanel').contains('a', accountService);
     }
 })
+
+Then(`I can view the available Bookstore SOAP services`, () => {
+    const bookstoreSOAPservices = [
+        "Bookstore",
+        "Bookstore (Version 2.0)",
+        "(WS-Security Username Token)",
+        "(WS-Security Signature)",
+        "(WS-Security Encryption)",
+        "(WS-Security Signature and Encryption)"
+    ]
+
+    cy.get('span[class="heading"]').contains('Available Bookstore SOAP services:')
+    for(const bookstoreSOAPservice of bookstoreSOAPservices) {
+        cy.get('#rightPanel').contains('span[class="porttypename"]', bookstoreSOAPservice);
+    }
+})
+
+
+ 
  

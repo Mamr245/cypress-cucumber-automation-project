@@ -40,5 +40,9 @@ class Homepage_PO extends Base_PO {
     clickSiteMapLink() {
         cy.get('#footerPanel').find('a[href*="sitemap"]').click()
     } 
+
+    clickServicesLink() {
+        cy.get('#footerPanel').find('a[href*="services"]').click()
+    } 
 }
 export default Homepage_PO;
