@@ -17,26 +17,25 @@ Feature: ParaBank - Customer Care feature
         And I type a valid phone number
         And I type a message
         And I click the Send to Customer Care button
-        Then Then I should get the error message "Name is required."
+        Then I should get the error message "Name is required."
 
     Scenario: Send message to Customer Care - Empty email
         And I type a name
         And I type a valid phone number
         And I type a message
         And I click the Send to Customer Care button
-        Then Then I should get the error message "Email is required."
+        Then I should get the error message "Email is required."
 
     Scenario: Send message to Customer Care - Empty phone number
         And I type a name
         And I type a valid email
         And I type a message
         And I click the Send to Customer Care button
-        Then Then I should get the error message "Phone is required."
+        Then I should get the error message "Phone is required."
 
-    Scenario: Send message to Customer Care - Empty phone number
+    Scenario: Send message to Customer Care - Empty message
         And I type a name
         And I type a valid email
         And I type a valid phone number
-        And I type a message
         And I click the Send to Customer Care button
-        Then Then I should get the error message "Message is required."
+        Then I should get the error message "Message is required."
