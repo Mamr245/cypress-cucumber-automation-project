@@ -20,6 +20,10 @@ class Homepage_PO extends Base_PO {
         cy.get('input[name="password"]').type(password);
     }
 
+    clickHomeFooterLink() {
+        cy.get(this.footer).find('a[href*="index"]').click()
+    }
+
     clickAboutUsFooterLink() {
         cy.get(this.footer).find('a[href*="about"]').click()
     }

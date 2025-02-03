@@ -1,8 +1,9 @@
 class Base_PO {
     userData = 'userData.json';
+    configFile = 'config.json';
 
     navigateToHomepage() {
-        cy.fixture("config.json").then((data) => {
+        cy.fixture(this.configFile).then((data) => {
             cy.visit(data.baseURL)
         })
     }

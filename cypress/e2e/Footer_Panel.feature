@@ -6,6 +6,11 @@ Feature: ParaBank - Footer Panel feature
     Scenario: About Us
         When I click on the About Us link in the footer panel
         Then I am presented with information about ParaBank
+
+    Scenario: Home
+        When I click on the About Us link in the footer panel
+        And I click on the Home link in the footer panel
+        Then I am redirected back to the main page
         
     Scenario: Services
         When I click on the Services link in the footer panel

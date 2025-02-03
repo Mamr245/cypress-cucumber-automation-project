@@ -22,5 +22,3 @@ Feature: ParaBank - Header Panel feature
     Scenario: Locations
         When I click on the Locations link in the header panel
         Then I am redirected to ParaBank's solutions website
-
-

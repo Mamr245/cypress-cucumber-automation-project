@@ -20,6 +20,10 @@ When(`I click on the About Us link in the footer panel`, () => {
     homePage.clickAboutUsFooterLink();
 })
 
+When(`I click on the Home link in the footer panel`, () => {
+    homePage.clickHomeFooterLink();
+})
+
 When(`I click on the About Us link in the header panel`, () => {
     homePage.clickAboutUsHeaderLink();
 })
@@ -90,7 +94,7 @@ Then(`I should get the error {string}`, (errorMessage) => {
 })
 
 Then(`I should be logged out`, () => {
-    cy.fixture("config.json").then((data) => {
+    cy.fixture(homePage.configFile).then((data) => {
         cy.url().should('include', data.baseURL);
     })
 })
@@ -106,6 +110,13 @@ Then(`I am redirected to ParaBank's solutions website`, () => {
 Then(`I am redirected to ParaBank's forum website`, () => {
     cy.url().should('eq', 'https://forums.parasoft.com/');
 })
+
+Then(`I am redirected back to the main page`, () => {
+    cy.fixture(homePage.configFile).then((data) => {
+        cy.url().should('include', data.baseURL);
+    })
+})
+
 
  
  
