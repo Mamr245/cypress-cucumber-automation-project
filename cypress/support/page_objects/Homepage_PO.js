@@ -1,6 +1,9 @@
 import Base_PO from "./Base_PO";
 
 class Homepage_PO extends Base_PO {
+    footer = '#footerPanel';
+    headerLeftMenu = '#headerPanel > ul[class="leftmenu"]';
+
     clickOnRegisterLink() {
         cy.get('a[href*="register"]').click()
     }
@@ -17,32 +20,48 @@ class Homepage_PO extends Base_PO {
         cy.get('input[name="password"]').type(password);
     }
 
-    clickAboutUsLink() {
-        cy.get('#footerPanel').find('a[href*="about"]').click()
+    clickAboutUsFooterLink() {
+        cy.get(this.footer).find('a[href*="about"]').click()
     }
     
-    clickProductsLink() {
-        cy.get('#footerPanel').find('a[href*="products"]').click()
+    clickProductsFooterLink() {
+        cy.get(this.footer).find('a[href*="products"]').click()
     } 
 
-    clickLocationsLink() {
-        cy.get('#footerPanel').find('a[href*="contacts"]').click()
+    clickLocationsFooterLink() {
+        cy.get(this.footer).find('a[href*="contacts"]').click()
     }
     
-    clickForumLink() {
-        cy.get('#footerPanel').find('a[href*="forums"]').click()
+    clickForumFooterLink() {
+        cy.get(this.footer).find('a[href*="forums"]').click()
     } 
 
-    clickContactUsLink() {
-        cy.get('#footerPanel').find('a[href*="contact.htm"]').click()
+    clickContactUsFooterLink() {
+        cy.get(this.footer).find('a[href*="contact.htm"]').click()
     } 
 
-    clickSiteMapLink() {
-        cy.get('#footerPanel').find('a[href*="sitemap"]').click()
+    clickSiteMapFooterLink() {
+        cy.get(this.footer).find('a[href*="sitemap"]').click()
     } 
 
-    clickServicesLink() {
-        cy.get('#footerPanel').find('a[href*="services"]').click()
+    clickServicesFooterLink() {
+        cy.get(this.footer).find('a[href*="services"]').click()
     } 
+
+    clickAboutUsHeaderLink() {
+        cy.get(this.headerLeftMenu).find('a[href*="about"]').click()
+    }
+
+    clickServicesHeaderLink() {
+        cy.get(this.headerLeftMenu).find('a[href*="services"]').click()
+    } 
+
+    clickProductsHeaderLink() {
+        cy.get(this.headerLeftMenu).find('a[href*="products"]').click()
+    } 
+
+    clickLocationsHeaderLink() {
+        cy.get(this.headerLeftMenu).find('a[href*="contacts"]').click()
+    }  
 }
 export default Homepage_PO;

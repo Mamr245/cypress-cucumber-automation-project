@@ -7,7 +7,6 @@ const homePage = new Homepage_PO();
 This file is generated while creating an account.
 Right after that the login tests are performed using the data written to the created file
 */
-const userData = 'userData.json' 
 
 Given(`I navigate to the ParaBank website`, () => {
     homePage.navigateToHomepage();
@@ -18,31 +17,47 @@ When(`I click on the register link`, () => {
 })
 
 When(`I click on the About Us link in the footer panel`, () => {
-    homePage.clickAboutUsLink();
+    homePage.clickAboutUsFooterLink();
+})
+
+When(`I click on the About Us link in the header panel`, () => {
+    homePage.clickAboutUsHeaderLink();
 })
 
 When(`I click on the Products link in the footer panel`, () => {
-    homePage.clickProductsLink();
+    homePage.clickProductsFooterLink();
+})
+
+When(`I click on the Products link in the header panel`, () => {
+    homePage.clickProductsHeaderLink();
 })
 
 When(`I click on the Locations link in the footer panel`, () => {
-    homePage.clickLocationsLink();
+    homePage.clickLocationsFooterLink();
+})
+
+When(`I click on the Locations link in the header panel`, () => {
+    homePage.clickLocationsHeaderLink();
 })
 
 When(`I click on the Forum link in the footer panel`, () => {
-    homePage.clickForumLink();
+    homePage.clickForumFooterLink();
 })
 
 When(`I click on the Contact Us link in the footer panel`, () => {
-    homePage.clickContactUsLink();
+    homePage.clickContactUsFooterLink();
 })
 
 When(`I click on the Site Map link in the footer panel`, () => {
-    homePage.clickSiteMapLink();
+    homePage.clickSiteMapFooterLink();
 })
 
 When(`I click on the Services link in the footer panel`, () => {
-    homePage.clickServicesLink();
+    homePage.clickServicesFooterLink();
+})
+
+When(`I click on the Services link in the header panel`, () => {
+    homePage.clickServicesHeaderLink();
 })
 
 When(`I click on the Log In button`, () => {

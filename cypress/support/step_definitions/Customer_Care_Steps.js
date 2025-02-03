@@ -31,12 +31,12 @@ When(`I click the Send to Customer Care button`, () => {
 
 Then(`A message saying I'll be contacted is shown`, () => {
     cy.get('#rightPanel > h1').contains('Customer Care');
-    cy.get('#rightPanel > h1').contains('Customer Care');
+    cy.get('#rightPanel > p').first().contains(`Thank you ${name}`);
+    cy.get('#rightPanel > p').last().contains('A Customer Care Representative will be contacting you.');
 })
 
 Then(`A customer care section with a form is presented`, () => {
     cy.url().should('contain', 'https://parabank.parasoft.com/parabank/contact.htm');
     cy.get('#rightPanel > h1').contains('Customer Care');
-    cy.get('#rightPanel > p').first().contains(`Thank you ${name}`);
-    cy.get('#rightPanel > p').last().contains('A Customer Care Representative will be contacting you.');
+    cy.get('#contactForm').should('be.visible');
 })

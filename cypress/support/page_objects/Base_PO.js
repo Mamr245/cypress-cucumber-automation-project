@@ -1,5 +1,5 @@
 class Base_PO {
-    userData = 'userData.json'
+    userData = 'userData.json';
 
     navigateToHomepage() {
         cy.fixture("config.json").then((data) => {
