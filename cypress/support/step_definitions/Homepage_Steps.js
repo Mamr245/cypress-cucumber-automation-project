@@ -68,6 +68,18 @@ When(`I click on the Parasoft website link in the footer panel`, () => {
     homePage.clickParasoftWebsiteFooterLink();
 })
 
+When(`I click on the About Us button in the header panel`, () => {
+    homePage.clickAboutUsButton();
+})
+
+When(`I click on the Envelope button in the header panel`, () => {
+    homePage.clickEnvelopeButton();
+})
+
+When(`I click on the Home button in the header panel`, () => {
+    homePage.clickHomeButton();
+})
+
 When(`I click on the Log In button`, () => {
     homePage.clickOnLoginButton();
 })

@@ -22,3 +22,16 @@ Feature: ParaBank - Header Panel feature
     Scenario: Locations
         When I click on the Locations link in the header panel
         Then I am redirected to ParaBank's solutions website
+
+    Scenario: About Us Button
+        When I click on the About Us button in the header panel
+        Then I am presented with information about ParaBank
+
+    Scenario: Envelope Button
+        When I click on the Envelope button in the header panel
+        Then A customer care section with a form is presented
+    
+    Scenario: Home Button
+        When I click on the About Us button in the header panel
+        And I click on the Home button in the header panel
+        Then I am redirected back to the main page
