@@ -52,6 +52,10 @@ class Homepage_PO extends Base_PO {
         cy.get(this.footer).find('a[href*="services"]').click()
     } 
 
+    clickParasoftWebsiteFooterLink() {
+        cy.get(`${this.footer} > ul[class="visit"]`).find('a[href*="http://www.parasoft.com/"]').invoke("removeAttr", "target").click()
+    } 
+
     clickAboutUsHeaderLink() {
         cy.get(this.headerLeftMenu).find('a[href*="about"]').click()
     }

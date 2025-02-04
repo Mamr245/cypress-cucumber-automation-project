@@ -64,6 +64,10 @@ When(`I click on the Services link in the header panel`, () => {
     homePage.clickServicesHeaderLink();
 })
 
+When(`I click on the Parasoft website link in the footer panel`, () => {
+    homePage.clickParasoftWebsiteFooterLink();
+})
+
 When(`I click on the Log In button`, () => {
     homePage.clickOnLoginButton();
 })
@@ -117,6 +121,9 @@ Then(`I am redirected back to the main page`, () => {
     })
 })
 
+Then(`I am redirected to Parasoft's website`, () => {
+    cy.url().should('eq', 'https://www.parasoft.com/');
+})
 
  
  

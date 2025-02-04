@@ -39,5 +39,8 @@ Feature: ParaBank - Footer Panel feature
     Scenario: Contact Us
         When I click on the Contact Us link in the footer panel
         Then A customer care section with a form is presented
-
+    
+    Scenario: Parasoft Website
+        When I click on the Parasoft website link in the footer panel
+        Then I am redirected to Parasoft's website
 
