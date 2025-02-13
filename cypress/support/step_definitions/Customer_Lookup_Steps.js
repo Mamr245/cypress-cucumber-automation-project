@@ -9,7 +9,7 @@ const address = faker.location.street();
 const city = faker.location.city();
 const state = faker.location.state();
 const zipCode = faker.location.zipCode();
-// const ssn = registerPage.generateSSN();
+const ssn = customerLookupPage.generateSSN();
 
 
 When(`I type the user's correct information`, () => {
@@ -113,7 +113,7 @@ When(`I type mismatching user information`, () => {
     customerLookupPage.typeCity(city);
     customerLookupPage.typeState(state);
     customerLookupPage.typeZipCode(zipCode);
-    //customerLookupPage.typeSSN(data.SSN);
+    customerLookupPage.typeSSN(ssn);
 })
 
 
