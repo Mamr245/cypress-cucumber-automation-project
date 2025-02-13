@@ -83,6 +83,10 @@ class Homepage_PO extends Base_PO {
 
     clickLocationsHeaderLink() {
         cy.get(this.headerLeftMenu).find('a[href*="contacts"]').click();
+    } 
+    
+    clickAdminPageHeaderLink() {
+        cy.get(this.headerLeftMenu).find('a[href*="admin"]').click();
     }  
 }
 export default Homepage_PO;

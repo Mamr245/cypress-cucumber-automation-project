@@ -80,6 +80,10 @@ When(`I click on the Home button in the header panel`, () => {
     homePage.clickHomeButton();
 })
 
+When(`I click on the Admin Page button in the header panel`, () => {
+    homePage.clickAdminPageHeaderLink();
+})
+
 When(`I click on the Log In button`, () => {
     homePage.clickOnLoginButton();
 })
