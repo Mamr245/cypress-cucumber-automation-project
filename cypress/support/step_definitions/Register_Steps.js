@@ -12,8 +12,8 @@ const state = faker.location.state();
 const zipCode = faker.location.zipCode();
 const phoneNumber = faker.phone.number();
 const ssn = registerPage.generateSSN();
-const username = faker.internet.username()
-const password = faker.internet.password()
+const username = faker.internet.username();
+const password = faker.internet.password();
 
 When(`I type a first name`, () => {
     registerPage.typeFirstName(firstName);
