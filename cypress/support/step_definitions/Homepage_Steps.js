@@ -16,6 +16,10 @@ When(`I click on the register link`, () => {
     homePage.clickOnRegisterLink();
 })
 
+When(`I click on the Forgot Login Info link`, () => {
+    homePage.clickOnForgotLoginInfoLink();
+})
+
 When(`I click on the About Us link in the footer panel`, () => {
     homePage.clickAboutUsFooterLink();
 })

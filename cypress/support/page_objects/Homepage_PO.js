@@ -9,6 +9,10 @@ class Homepage_PO extends Base_PO {
         cy.get('a[href*="register"]').click();
     }
 
+    clickOnForgotLoginInfoLink() {
+        cy.get('a[href*="lookup"]').click();
+    }
+
     clickOnLoginButton() {
         cy.get('input[value="Log In"]').click();
     }
