@@ -1,6 +1,6 @@
 import Base_PO from "./Base_PO";
 
-class UpdateProfile_PO extends Base_PO { 
+class UpdateContactInfo_PO extends Base_PO { 
     firstNameInputLocator = 'input[name="customer.firstName"]'
     lastNameInputLocator = 'input[name="customer.lastName"]'
     addressInputLocator = 'input[name="customer.address.street"]'
@@ -88,4 +88,4 @@ class UpdateProfile_PO extends Base_PO {
         cy.get(this.phoneNumberNameInputLocator).contains(phoneNumber);
     }
 }
-export default UpdateProfile_PO
+export default UpdateContactInfo_PO;

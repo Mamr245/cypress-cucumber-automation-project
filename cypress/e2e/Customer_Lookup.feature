@@ -1,4 +1,4 @@
-Feature: ParaBank - Forgot login info page
+Feature: ParaBank - Customer Lookup page
 
     Background: Pre conditions
         Given I navigate to the ParaBank website
