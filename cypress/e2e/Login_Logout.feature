@@ -1,5 +1,9 @@
 Feature: ParaBank - Login/Logout feature
 
+    # Workaround because demo site does not save credentials
+    # A file is generated while creating an account.
+    # Right after that the login tests are performed using the data written to the created file
+
     Background: Pre conditions
         Given I navigate to the ParaBank website
 

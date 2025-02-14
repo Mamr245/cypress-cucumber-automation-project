@@ -12,6 +12,10 @@ class AccountServices_PO extends Base_PO {
     clickOpenNewAccountLink() {
         cy.get('a[href*="openaccount"]').click();
     }
+
+    clickUpdateContactInfoLink() {
+        cy.get('a[href*="updateprofile"]').click();
+    }
     
     selectChekckingAccountOption() {
         cy.get('#type').select('CHECKING');
@@ -28,6 +32,5 @@ class AccountServices_PO extends Base_PO {
     selectFromAccount(account) {
         cy.get('#fromAccountId').select(account);
     }
-
 }
 export default AccountServices_PO;

@@ -36,12 +36,3 @@ Feature: ParaBank - Account Services feature
         Then A succes message with the transfer information is shown
         And The updated account values are shown in the account overview
 
-    Scenario: Transfer Funds to same account
-    # Tem de falhar
-
-    Scenario: Transfer Funds with insuficient funds
-    # Tem de falhar
-
-    Scenario: Open New Account with insuficient funds
-    # Tem de falhar
-

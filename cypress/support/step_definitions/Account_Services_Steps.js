@@ -19,6 +19,10 @@ When(`I click on the Open New Account link`, () => {
     accountServicesPage.clickOpenNewAccountLink();
 })
 
+When(`I click on the Update Contact Info link`, () => {
+    accountServicesPage.clickUpdateContactInfoLink();
+})
+
 When(`I select the Checking option`, () => {
     accountServicesPage.selectChekckingAccountOption();
 })

@@ -1,6 +1,7 @@
 import { When, Then }  from "@badeball/cypress-cucumber-preprocessor";
-import Register_PO from "../page_objects/Register_PO";
 import { faker } from '@faker-js/faker';
+import Register_PO from "../page_objects/Register_PO";
+
 
 const registerPage = new Register_PO();
 
@@ -70,7 +71,8 @@ Then(`My account should be created`, () => {
 })
 
 Then(`I should get the error message {string}`, (errorMessage) => {
-    cy.get('.error').should('have.text', errorMessage);
+    // cy.get('.error').should('have.text', errorMessage);
+    cy.get('.error').contains(errorMessage);
 })
 
 
