@@ -1,9 +1,9 @@
 import { When, Then }  from "@badeball/cypress-cucumber-preprocessor";
 import { newAccountNumber } from "./Open_New_Account_Steps";
+import { amountToTransfer } from "./Transfer_Funds_Steps";
 import AccountOverview_PO from "../page_objects/Account_Overview_PO";
 
 const accountOverviewPage = new AccountOverview_PO();
-const amountToTransfer = '50' ;
 
 var fromAccount;
 var toAccount;
@@ -29,6 +29,7 @@ When(`I click on the Open New Account link`, () => {
 })
 
 When(`I click on the Transfer Funds link`, () => {
+    // Get account number and initial amount of money from account from which we'll transfer funds
     cy.get('#accountTable').find('a').first().invoke('text').then((accountNumberID) => {
         fromAccount = accountNumberID;  
         cy.get(`a[href*="${fromAccount}"]`).parent().siblings().first().invoke('text').then((accountAmount) => {
@@ -36,6 +37,7 @@ When(`I click on the Transfer Funds link`, () => {
         })         
     })
 
+    // Get account number and initial amount of money from account which will receive the funds 
     cy.get('#accountTable').find('a').last().invoke('text').then((accountNumberID) => {
         toAccount = accountNumberID; 
         cy.get(`a[href*="${toAccount}"]`).parent().siblings().first().invoke('text').then((accountAmount) => {
@@ -46,21 +48,8 @@ When(`I click on the Transfer Funds link`, () => {
     accountOverviewPage.clickTransferFundsLink();
 })
 
-When(`I select a from account`, () => {
-    accountOverviewPage.selectFromAccount(fromAccount);
-})
-
-When(`I select a to account`, () => {
-    accountOverviewPage.selecToAccount(toAccount);
-})
-
-
 When(`I click on the Update Contact Info link`, () => {
     accountOverviewPage.clickUpdateContactInfoLink();
-})
-
-When(`I type a valid amount to transfer`, () => {
-    accountOverviewPage.typeAmountToTransfer(amountToTransfer);
 })
 
 When(`The new account is visible in the account overview`, () => {
@@ -75,10 +64,6 @@ When(`It has the right amount of money`, () => {
 
 When(`I click on the Log Out link`, () => {
     accountOverviewPage.clickLogOutButton();
-})
-
-When(`I click on the Transfer button`, () => {
-    accountOverviewPage.clickTransferButton();
 })
 
 When(`The updated account values are shown in the account overview`, () => {
@@ -98,11 +83,4 @@ Then(`I should be able to access my account`, () => {
     })
 })
 
-Then(`A succes message with the transfer information is shown`, () => {
-    cy.get('#showResult > h1').should('have.text', 'Transfer Complete!');
-    cy.get('#amountResult').contains(amountToTransfer); 
-    cy.get('#fromAccountIdResult').contains(fromAccount);
-    cy.get('#toAccountIdResult').contains(toAccount);
-})
-
-export { checkingAccountNumber };
+export { checkingAccountNumber, fromAccount, toAccount };

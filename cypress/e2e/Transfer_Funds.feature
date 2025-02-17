@@ -8,9 +8,9 @@ Feature: ParaBank - Open New Account feature
 
     Scenario: Transfer Funds
         And I click on the Transfer Funds link
-        And I type a valid amount to transfer
+        And I type an amount to transfer
         And I select a from account
         And I select a to account
         And I click on the Transfer button
-        Then A succes message with the transfer information is shown
+        Then A success message with the transfer information is shown
         And The updated account values are shown in the account overview

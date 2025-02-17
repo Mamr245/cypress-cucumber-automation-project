@@ -20,21 +20,5 @@ class AccountOverview_PO extends Base_PO {
     clickUpdateContactInfoLink() {
         cy.get('a[href*="updateprofile"]').click();
     }
-
-    clickTransferButton() {
-        cy.get('input[value="Transfer"]').click();
-    }
- /*
-    selectFromAccount(account) {
-        cy.get('#fromAccountId').select(account);
-    }
-*/
-    typeAmountToTransfer(amountToTransfer) {
-        cy.get('#amount').type(amountToTransfer);
-    }
-
-    selecToAccount(toAccount) {
-        cy.get('#toAccountId').select(toAccount);
-    }
 }
 export default AccountOverview_PO;
