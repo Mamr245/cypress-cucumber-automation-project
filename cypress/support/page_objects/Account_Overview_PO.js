@@ -17,6 +17,10 @@ class AccountOverview_PO extends Base_PO {
         cy.get('a[href*="transfer"]').click();
     }
 
+    clickBillPayButton() {
+        cy.get('a[href*="billpay"]').click();
+    }
+
     clickUpdateContactInfoLink() {
         cy.get('a[href*="updateprofile"]').click();
     }
