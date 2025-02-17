@@ -20,5 +20,9 @@ class Base_PO {
         const ssn = firstThreeDigits + "-" + middleDigits + "-" + lastFourDigits;
         return ssn;
     }
+
+    selectFromAccount(fromAccount) {
+        cy.get('#fromAccountId').select(fromAccount);
+    }
 }
 export default Base_PO;
