@@ -1,6 +1,6 @@
 import { When, Then }  from "@badeball/cypress-cucumber-preprocessor";
 import { newAccountNumber } from "./Open_New_Account_Steps";
-import AccountOverview_PO from "../page_objects/AccountOverview_PO";
+import AccountOverview_PO from "../page_objects/Account_Overview_PO";
 
 const accountOverviewPage = new AccountOverview_PO();
 const amountToTransfer = '50' ;
