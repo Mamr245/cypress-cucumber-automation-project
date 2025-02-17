@@ -13,6 +13,10 @@ class AccountServices_PO extends Base_PO {
         cy.get('a[href*="openaccount"]').click();
     }
 
+    clickTransferFundsLink() {
+        cy.get('a[href*="transfer"]').click();
+    }
+
     clickUpdateContactInfoLink() {
         cy.get('a[href*="updateprofile"]').click();
     }
@@ -29,8 +33,24 @@ class AccountServices_PO extends Base_PO {
         cy.get('input[value="Open New Account"]').click();
     }
 
+    clickTransferButton() {
+        cy.get('input[value="Transfer"]').click();
+    }
+
     selectFromAccount(account) {
         cy.get('#fromAccountId').select(account);
+    }
+
+    typeAmountToTransfer(amountToTransfer) {
+        cy.get('#amount').type(amountToTransfer);
+    }
+    
+    selectFromAccount(fromAccount) {
+        cy.get('#fromAccountId').select(fromAccount);
+    }
+
+    selecToAccount(toAccount) {
+        cy.get('#toAccountId').select(toAccount);
     }
 }
 export default AccountServices_PO;

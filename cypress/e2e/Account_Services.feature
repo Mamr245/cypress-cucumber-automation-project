@@ -28,7 +28,7 @@ Feature: ParaBank - Account Services feature
         And It has the right amount of money
 
     Scenario: Transfer Funds
-        And I click on the Transfer Funds button
+        And I click on the Transfer Funds link
         And I type a valid amount to transfer
         And I select a from account
         And I select a to account
