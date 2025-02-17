@@ -12,7 +12,9 @@ const state = faker.location.state();
 const zipCode = faker.location.zipCode();
 const phoneNumber = faker.phone.number();
 const accountNumber = faker.finance.accountNumber();
+const anotherAccountNumber = faker.finance.accountNumber(); // used to valide mismatching bank accounts scenario
 const billAmount = Math.floor(Math.random() * 51).toFixed(2); // Transfer between 0 and 50$
+const invalidAccountNumber = '1nv4l1dAccountNumber'
 
 When(`I type the payee's name`, () => {
     billPayPage.typeName(name);
@@ -56,6 +58,18 @@ When(`I select an account from which to pay the bill`, () => {
 
 When(`I click the Send Payment Button`, () => {
     billPayPage.clickSendPaymentButton();
+})
+
+When(`I type an invalid bank account`, () => {
+    billPayPage.typeAccountNumber(invalidAccountNumber);
+})
+
+When(`I type an invalid bank account in the confirmation field`, () => {
+    billPayPage.typeVerifyAccountNumber(invalidAccountNumber);
+})
+
+When(`I type a different bank account in the confirmation field`, () => {
+    billPayPage.typeVerifyAccountNumber(anotherAccountNumber);
 })
 
 Then(`A success message is shown with the bill payment information`, () => {
