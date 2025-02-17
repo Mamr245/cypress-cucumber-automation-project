@@ -3,6 +3,7 @@ import { faker } from '@faker-js/faker';
 import CustomerLookup_PO from "../page_objects/Customer_Lookup_PO";
 
 const customerLookupPage = new CustomerLookup_PO();
+
 const firstName = faker.person.firstName();
 const lastName = faker.person.lastName();
 const address = faker.location.street();
@@ -10,7 +11,6 @@ const city = faker.location.city();
 const state = faker.location.state();
 const zipCode = faker.location.zipCode();
 const ssn = customerLookupPage.generateSSN();
-
 
 When(`I type the user's correct information`, () => {
     cy.fixture(customerLookupPage.userData).then((data)  => {
@@ -27,7 +27,6 @@ When(`I type the user's correct information`, () => {
 When(`I click the Find My Login Info buton`, () => {
     customerLookupPage.clickFindMyLoginInfo();
 })
-
 
 When(`I type the user's information and leave the first name field empty`, () => {
     cy.fixture(customerLookupPage.userData).then((data)  => {
@@ -115,7 +114,6 @@ When(`I type mismatching user information`, () => {
     customerLookupPage.typeZipCode(zipCode);
     customerLookupPage.typeSSN(ssn);
 })
-
 
 Then(`I can see the user's username and password`, () => {
     cy.get('#rightPanel > h1').contains('Customer Lookup')

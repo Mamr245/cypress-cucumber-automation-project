@@ -107,11 +107,6 @@ When(`I type an invalid password`, () => {
     homePage.typePassword("WrongUsername");
 })
 
-Then(`I should get the error {string}`, (errorMessage) => {
-    cy.get('#rightPanel > h1').should('have.text', 'Error!');
-    cy.get('#rightPanel > p').should('have.text', errorMessage);
-})
-
 Then(`I should be logged out`, () => {
     cy.fixture(homePage.configFile).then((data) => {
         cy.url().should('include', data.baseURL);

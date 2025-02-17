@@ -1,10 +1,11 @@
 import { When, Then }  from "@badeball/cypress-cucumber-preprocessor";
 import { faker } from '@faker-js/faker';
 import UpdateContactInfo_PO from "../page_objects/Update_Contact_Info_PO";
-import AccountServices_PO from "../page_objects/AccountServices_PO";
+import AccountServices_PO from "../page_objects/Account_Services_PO";
 
 const accountServicesPage = new AccountServices_PO();
 const updateContactInfoPage = new UpdateContactInfo_PO();
+
 const firstName = faker.person.firstName();
 const lastName = faker.person.lastName();
 const address = faker.location.street();

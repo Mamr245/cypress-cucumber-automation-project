@@ -1,6 +1,6 @@
 import { When, Then }  from "@badeball/cypress-cucumber-preprocessor";
 import { faker } from '@faker-js/faker';
-import CustomerCare_PO from "../page_objects/CustomerCare_PO";
+import CustomerCare_PO from "../page_objects/Customer_Care_PO";
 
 const customerCarePage = new CustomerCare_PO();
 

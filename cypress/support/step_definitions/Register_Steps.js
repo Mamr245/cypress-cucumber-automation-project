@@ -2,7 +2,6 @@ import { When, Then }  from "@badeball/cypress-cucumber-preprocessor";
 import { faker } from '@faker-js/faker';
 import Register_PO from "../page_objects/Register_PO";
 
-
 const registerPage = new Register_PO();
 
 const firstName = faker.person.firstName();
@@ -69,11 +68,4 @@ Then(`My account should be created`, () => {
     cy.get('#rightPanel > p').should('have.text', 'Your account was created successfully. You are now logged in.')
     registerPage.saveUserData(username, password, firstName, lastName, address, city, state, zipCode, ssn)
 })
-
-Then(`I should get the error message {string}`, (errorMessage) => {
-    // cy.get('.error').should('have.text', errorMessage);
-    cy.get('.error').contains(errorMessage);
-})
-
-
 

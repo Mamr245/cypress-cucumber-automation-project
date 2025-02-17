@@ -17,27 +17,27 @@ Feature: ParaBank - Login/Logout feature
         When I type an invalid username
         And I type a valid password
         And I click on the Log In button
-        Then I should get the error "The username and password could not be verified."
+        Then I should get the error message "The username and password could not be verified."
 
     Scenario: Login - Invalid user - Invalid password
         When I type a valid username
         And I type an invalid password
         And I click on the Log In button
-        Then I should get the error "The username and password could not be verified."
+        Then I should get the error message "The username and password could not be verified."
 
     Scenario: Login - Invalid user - Missing username
         When I type a valid password
         And I click on the Log In button
-        Then I should get the error "Please enter a username and password."
+        Then I should get the error message "Please enter a username and password."
 
     Scenario: Login - Invalid user - Missing password
         When I type a valid username
         And I click on the Log In button
-        Then I should get the error "Please enter a username and password."
+        Then I should get the error message "Please enter a username and password."
 
     Scenario: Login - Invalid user - Missing credentials
         When I click on the Log In button
-        Then I should get the error "Please enter a username and password."
+        Then I should get the error message "Please enter a username and password."
 
     Scenario: Logout
         When I type a valid username

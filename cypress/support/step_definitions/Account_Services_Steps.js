@@ -1,5 +1,5 @@
 import { When, Then }  from "@badeball/cypress-cucumber-preprocessor";
-import AccountServices_PO from "../page_objects/AccountServices_PO";
+import AccountServices_PO from "../page_objects/Account_Services_PO";
 
 const accountServicesPage = new AccountServices_PO();
 const amountToTransfer = '50' ;
@@ -99,7 +99,7 @@ When(`The updated account values are shown in the account overview`, () => {
     finalToAccountAmount = toAccountInitialAmount + Number(amountToTransfer);
 
     accountServicesPage.clickAccountsOverviewLink();
-    
+
     cy.get(`a[href*="${fromAccount}"]`).parent().siblings().first().should('have.text', `$${finalFromAccountAmount.toFixed(2)}`);
     cy.get(`a[href*="${toAccount}"]`).parent().siblings().first().should('have.text', `$${finalToAccountAmount.toFixed(2)}`);
 })
@@ -127,4 +127,3 @@ Then(`A succes message with the transfer information is shown`, () => {
     cy.get('#fromAccountIdResult').contains(fromAccount);
     cy.get('#toAccountIdResult').contains(toAccount);
 })
-
