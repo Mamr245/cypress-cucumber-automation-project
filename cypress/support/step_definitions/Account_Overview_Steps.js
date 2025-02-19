@@ -53,6 +53,14 @@ When(`I click on the Update Contact Info link`, () => {
     accountOverviewPage.clickUpdateContactInfoLink();
 })
 
+When(`I click on the Find Transactions link`, () => {
+    cy.get('#accountTable').find('a').first().invoke('text').then((accountNumberID) => {
+        assert(parseInt(accountNumberID), "Value isn't an integer!");
+        checkingAccountNumber = accountNumberID;       
+    })
+    accountOverviewPage.clickFindTransactionsLink();
+})
+
 When(`The new account is visible in the account overview`, () => {
     accountOverviewPage.clickAccountsOverviewLink();
     cy.get('#accountTable').find(`a[href*="id=${newAccountNumber}"]`);

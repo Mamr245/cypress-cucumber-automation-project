@@ -5,9 +5,9 @@ Feature: ParaBank - Open New Account feature
         When I type a valid username
         And I type a valid password
         And I click on the Log In button
+        And I click on the Transfer Funds link
 
     Scenario: Transfer Funds
-        And I click on the Transfer Funds link
         And I type an amount to transfer
         And I select a from account
         And I select a to account

@@ -24,5 +24,9 @@ class AccountOverview_PO extends Base_PO {
     clickUpdateContactInfoLink() {
         cy.get('a[href*="updateprofile"]').click();
     }
+
+    clickFindTransactionsLink() {
+        cy.get('a[href*="findtrans"]').click();
+    }
 }
 export default AccountOverview_PO;

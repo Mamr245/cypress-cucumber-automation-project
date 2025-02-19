@@ -5,9 +5,9 @@ Feature: ParaBank - Open New Account feature
         When I type a valid username
         And I type a valid password
         And I click on the Log In button
+        And I click on the Open New Account link
 
     Scenario: Open New Checking Account
-        And I click on the Open New Account link
         And I select the Checking option
         And I select an account from which to transfer funds
         And I click on the Open New Account button
@@ -16,7 +16,6 @@ Feature: ParaBank - Open New Account feature
         And It has the right amount of money
 
     Scenario: Open New Savings Account
-        And I click on the Open New Account link
         And I select the Savings option
         And I select an account from which to transfer funds
         And I click on the Open New Account button
