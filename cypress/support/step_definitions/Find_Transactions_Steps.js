@@ -37,7 +37,7 @@ When(`I click the Find Transactions button in the find by amount section`, () =>
 })
 
 When(`I click the Find Transactions button in the find by date range section`, () => {
-    findTransactionsPage.clickFindTransactionsButton('byDataRange');
+    findTransactionsPage.clickFindTransactionsButton('byDateRange');
 })
 
 When(`I can see the transactions' information`, () => {
@@ -73,17 +73,16 @@ Then(`The transactions with the searched amount are shown`, () => {
 })
 
 Then(`The transactions done between the selected dates are shown`, () => {
-    const d1 = Date.parse(fromDate);
-    const d2 = Date.parse(currentDate);
+    const dateLowerInterval = Date.parse(fromDate);
+    const dateHigherInterval = Date.parse(currentDate);
     cy.get('#resultContainer').contains('Transaction Results');
     cy.get('#resultContainer').contains('Date');
     cy.get('#resultContainer').contains('Debit (-)');
     cy.get('#resultContainer').contains('Credit (+)');
     cy.get('#transactionBody > tr').each(($row) => {
-        //cy.wrap($row).contains(amount);
-        cy.get('td').first.invoke('text').then((transactionDate) => {
-            const transactionDat1e = Date.parse(transactionDate);
-            assert(d2 <= transactionDat1e <= d1 , "Date is not between the defined interval!");
+        cy.get('td').first().invoke('text').then((presentedTransactionDate) => {
+            const transactionDate = Date.parse(presentedTransactionDate);
+            assert(dateHigherInterval <= transactionDate <= dateLowerInterval , "Date is not between the defined interval!");
         })
     })
 })
