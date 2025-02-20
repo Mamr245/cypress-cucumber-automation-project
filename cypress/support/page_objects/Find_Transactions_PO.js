@@ -4,16 +4,16 @@ class FindTransactions_PO extends Base_PO {
     
     clickFindTransactionsButton(filter) {
             switch(filter) {
-            case 'id':
+            case 'byId':
                 cy.get('#findById').click();
                 break;
-            case 'amount':
+            case 'byAmount':
                 cy.get('#findByAmount').click();
                 break;
-            case 'date':
+            case 'byDate':
                 cy.get('#findByDate').click();
                 break;
-            case 'dateRange':
+            case 'byDateRange':
                 cy.get('#findByDateRange').click();
                 break;
             }

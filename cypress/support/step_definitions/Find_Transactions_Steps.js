@@ -3,20 +3,41 @@ import { checkingAccountNumber } from "./Account_Overview_Steps";
 import FindTransactions_PO from "../page_objects/Find_Transactions_PO";
 
 const findTransactionsPage = new FindTransactions_PO();
-var currentDate;
+const currentDate = findTransactionsPage.getCurrentDate();
+const fromDate = findTransactionsPage.getFromDate(5);
 var transactionId;
+var amount;
 
 When(`I select an account to search`, () => {
     findTransactionsPage.selecToAccount(checkingAccountNumber);
 })
 
 When(`I type today's date`, () => {
-    currentDate = findTransactionsPage.getCurrentDate();
     findTransactionsPage.typeTransactionDate(currentDate);
 })
 
+When(`I type the transaction amount`, () => {
+    findTransactionsPage.typeAmount(amount);
+})
+
+When(`I type a from date`, () => {
+    findTransactionsPage.typeFromDate(fromDate);
+})
+
+When(`I type a to date`, () => {
+    findTransactionsPage.typeToDate(currentDate);
+})
+
 When(`I click the Find Transactions button in the find by date section`, () => {
-    findTransactionsPage.clickFindTransactionsButton('date');
+    findTransactionsPage.clickFindTransactionsButton('byDate');
+})
+
+When(`I click the Find Transactions button in the find by amount section`, () => {
+    findTransactionsPage.clickFindTransactionsButton('byAmount');
+})
+
+When(`I click the Find Transactions button in the find by date range section`, () => {
+    findTransactionsPage.clickFindTransactionsButton('byDataRange');
 })
 
 When(`I can see the transactions' information`, () => {
@@ -26,8 +47,8 @@ When(`I can see the transactions' information`, () => {
     cy.get('#rightPanel').contains('Description');
     cy.get('#rightPanel').contains('Type');
     cy.get('#rightPanel').contains('Amount');
-    cy.get('#rightPanel > table').find('tr').first().invoke('text').then((TransactionID) => {
-        transactionId = TransactionID;       
+    cy.get('#rightPanel > table > tbody > tr').last().find('td').last().invoke('text').then((transactionAmount) => {
+        amount = transactionAmount.replace('$','').replace(',','.');     
     })
 })
 
@@ -36,9 +57,35 @@ Then(`The transactions performed today are shown`, () => {
     cy.get('#resultContainer').contains('Date');
     cy.get('#resultContainer').contains('Debit (-)');
     cy.get('#resultContainer').contains('Credit (+)');
-    cy.get('#transactionBody tr').each(($row) => {
+    cy.get('#transactionBody > tr').each(($row) => {
         cy.wrap($row).contains(currentDate);
       })
+})
+
+Then(`The transactions with the searched amount are shown`, () => {
+    cy.get('#resultContainer').contains('Transaction Results');
+    cy.get('#resultContainer').contains('Date');
+    cy.get('#resultContainer').contains('Debit (-)');
+    cy.get('#resultContainer').contains('Credit (+)');
+    cy.get('#transactionBody > tr').each(($row) => {
+        cy.wrap($row).contains(amount);
+      })
+})
+
+Then(`The transactions done between the selected dates are shown`, () => {
+    const d1 = Date.parse(fromDate);
+    const d2 = Date.parse(currentDate);
+    cy.get('#resultContainer').contains('Transaction Results');
+    cy.get('#resultContainer').contains('Date');
+    cy.get('#resultContainer').contains('Debit (-)');
+    cy.get('#resultContainer').contains('Credit (+)');
+    cy.get('#transactionBody > tr').each(($row) => {
+        //cy.wrap($row).contains(amount);
+        cy.get('td').first.invoke('text').then((transactionDate) => {
+            const transactionDat1e = Date.parse(transactionDate);
+            assert(d2 <= transactionDat1e <= d1 , "Date is not between the defined interval!");
+        })
+    })
 })
 
 export { transactionId };

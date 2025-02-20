@@ -14,6 +14,21 @@ Feature: ParaBank - Find Trasactions feature
         Then The transactions performed today are shown
         And I can see the transactions' information
 
+    Scenario: Find Trasactions - Find By Amount
+        And I type the transaction amount
+        And I click the Find Transactions button in the find by amount section
+        Then The transactions with the searched amount are shown
+    
+     #Scenario: Find Trasactions - Find By Date Range
+        #And I type a from date
+       # And I type a to date
+       # And I click the Find Transactions button in the find by date range section
+        #Then The transactions done between the selected dates are shown
+
+
+
+
+
     
 
 
