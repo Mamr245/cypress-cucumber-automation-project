@@ -79,13 +79,13 @@ class UpdateContactInfo_PO extends Base_PO {
     }
 
     validateUserInformation(firstName, lastName, address, city, state, zipCode, phoneNumber) {
-        cy.get(this.firstNameInputLocator).contains(firstName);
-        cy.get(this.lastNameInputLocator).contains(lastName);
-        cy.get(this.addressInputLocator).contains(address);
-        cy.get(this.cityInputLocator).contains(city);
-        cy.get(this.stateInputLocator).contains(state);
-        cy.get(this.zipCodeNameInputLocator).contains(zipCode);
-        cy.get(this.phoneNumberNameInputLocator).contains(phoneNumber);
+        cy.get(this.firstNameInputLocator).invoke('val').should('eq', firstName);
+        cy.get(this.lastNameInputLocator).invoke('val').should('eq', lastName);
+        cy.get(this.addressInputLocator).invoke('val').should('eq', address);
+        cy.get(this.cityInputLocator).invoke('val').should('eq', city);
+        cy.get(this.stateInputLocator).invoke('val').should('eq', state);
+        cy.get(this.zipCodeNameInputLocator).invoke('val').should('eq', zipCode);
+        cy.get(this.phoneNumberNameInputLocator).invoke('val').should('eq', phoneNumber);
     }
 }
 export default UpdateContactInfo_PO;

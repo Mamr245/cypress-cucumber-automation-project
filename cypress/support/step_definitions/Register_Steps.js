@@ -1,62 +1,50 @@
 import { When, Then }  from "@badeball/cypress-cucumber-preprocessor";
-import { faker } from '@faker-js/faker';
 import Register_PO from "../page_objects/Register_PO";
 
 const registerPage = new Register_PO();
 
-const firstName = faker.person.firstName();
-const lastName = faker.person.lastName();
-const address = faker.location.street();
-const city = faker.location.city();
-const state = faker.location.state();
-const zipCode = faker.location.zipCode();
-const phoneNumber = faker.phone.number();
-const ssn = registerPage.generateSSN();
-const username = faker.internet.username();
-const password = faker.internet.password();
-
 When(`I type a first name`, () => {
-    registerPage.typeFirstName(firstName);
+    registerPage.typeFirstName(registerPage.clientFirstName);
 })
 
 When(`I type a last name`, () => {
-    registerPage.typeLastName(lastName);
+    registerPage.typeLastName(registerPage.clientLastName);
 })
 
 When(`I type an address`, () => {
-    registerPage.typeAddress(address);
+    registerPage.typeAddress(registerPage.clientAddress);
 })
 
 When(`I type a city`, () => {
-    registerPage.typeCity(city);
+    registerPage.typeCity(registerPage.clientCity);
 })
 
 When(`I type a state`, () => {
-    registerPage.typeState(state);
+    registerPage.typeState(registerPage.clientState);
 })
 
 When(`I type a zip code`, () => {
-    registerPage.typeZipCode(zipCode);
+    registerPage.typeZipCode(registerPage.clientZipCode);
 })
 
 When(`I type a phone number`, () => {
-    registerPage.typePhoneNumber(phoneNumber);
+    registerPage.typePhoneNumber(registerPage.clientPhoneNumber);
 })
 
 When(`I type a social security number`, () => {
-    registerPage.typeSSN(ssn);
+    registerPage.typeSSN(registerPage.clientSSN);
 })
 
 When(`I type a username`, () => {
-    registerPage.typeUsername(username);
+    registerPage.typeUsername(registerPage.clientUsername);
 })
 
 When(`I type a password`, () => {
-    registerPage.typePassword(password);
+    registerPage.typePassword(registerPage.clientPassword);
 })
 
 When(`I confirm the password`, () => {
-    registerPage.repeatPassword(password);
+    registerPage.repeatPassword(registerPage.clientPassword);
 })
 
 When(`I click on the register button`, () => {
@@ -64,8 +52,9 @@ When(`I click on the register button`, () => {
 })
 
 Then(`My account should be created`, () => {
-    cy.get(`${registerPage.rightPanelLocator} > h1`).should('have.text', 'Welcome ' + username);
+    cy.get(`${registerPage.rightPanelLocator} > h1`).should('have.text', 'Welcome ' + registerPage.clientUsername);
     cy.get(`${registerPage.rightPanelLocator} > p`).should('have.text', 'Your account was created successfully. You are now logged in.');
-    registerPage.saveUserData(username, password, firstName, lastName, address, city, state, zipCode, ssn);
+    registerPage.saveUserData(registerPage.clientUsername, registerPage.clientPassword, registerPage.clientFirstName, registerPage.clientLastName, 
+        registerPage.clientAddress, registerPage.clientCity, registerPage.clientState, registerPage.clientZipCode, registerPage.clientSSN);
 })
 

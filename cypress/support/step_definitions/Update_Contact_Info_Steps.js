@@ -1,9 +1,9 @@
 import { When, Then }  from "@badeball/cypress-cucumber-preprocessor";
 import { faker } from '@faker-js/faker';
 import UpdateContactInfo_PO from "../page_objects/Update_Contact_Info_PO";
-import AccountServices_PO from "../page_objects/Account_Overview_PO";
+import AccountOverview_PO from "../page_objects/Account_Overview_PO";
 
-const accountServicesPage = new AccountServices_PO();
+const accountOverviewPage = new AccountOverview_PO();
 const updateContactInfoPage = new UpdateContactInfo_PO();
 
 const firstName = faker.person.firstName();
@@ -101,6 +101,7 @@ Then(`A successful message is presented`, () => {
 })
 
 When(`The information is updated`, () => {
-    accountServicesPage.clickUpdateContactInfoLink();
+    accountOverviewPage.clickUpdateContactInfoLink();
+    updateContactInfoPage.waitForUserInformationToAppear()
     updateContactInfoPage.validateUserInformation(firstName, lastName, address, city, state, zipCode, phoneNumber);
 })

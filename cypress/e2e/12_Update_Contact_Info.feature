@@ -7,7 +7,7 @@ Feature: ParaBank - Update Contact Info feature
         And I click on the Log In button
         And I click on the Update Contact Info link
 
-    @skip
+    #@skip
     Scenario: Update Account
         And I type the the necessary updated information
         And I click the Update Profile buton
@@ -43,4 +43,3 @@ Feature: ParaBank - Update Contact Info feature
         And I type the updated information but leave the zip code field empty
         And I click the Update Profile buton
         Then I should get the error message "Zip Code is required."
-
