@@ -7,7 +7,6 @@ Feature: ParaBank - Update Contact Info feature
         And I click on the Log In button
         And I click on the Update Contact Info link
 
-    #@skip
     Scenario: Update Account
         And I type the the necessary updated information
         And I click the Update Profile buton

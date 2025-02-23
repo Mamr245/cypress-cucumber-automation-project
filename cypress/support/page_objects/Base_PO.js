@@ -10,13 +10,18 @@ class Base_PO {
     }
 
     generateSSN() {
-        const firstThreeDigits = Math.floor(Math.random() * 999).toString();
-        const middleDigits = Math.floor(Math.random() * 99).toString();
-        const lastFourDigits = Math.floor(Math.random() * 9999).toString();
-
+        const firstThreeDigits = this.getRandomIntInclusive(100, 999).toString();
+        const middleDigits = this.getRandomIntInclusive(10, 99).toString();
+        const lastFourDigits = this.getRandomIntInclusive(1000, 9999).toString();
         const ssn = firstThreeDigits + "-" + middleDigits + "-" + lastFourDigits;
         return ssn;
     }
+
+    getRandomIntInclusive(min, max) {
+        const minCeiled = Math.ceil(min);
+        const maxFloored = Math.floor(max);
+        return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+      }
 
     selectFromAccount(fromAccount) {
         cy.get('#fromAccountId').select(fromAccount);
