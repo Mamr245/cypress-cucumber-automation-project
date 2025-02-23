@@ -1,4 +1,4 @@
-Feature: ParaBank - Open New Account feature
+Feature: ParaBank - Transfer Funds feature
 
     Background: Pre conditions
         Given I navigate to the ParaBank website

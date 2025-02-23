@@ -50,7 +50,7 @@ class Register_PO extends Base_PO {
     }
 
     /* Workaround because demo site does not save credentials
-    We save the inputed credentials while creating an account and read that file when performing the login tests
+    We save the defined credentials into a file while creating an account and read that file when performing the login tests
     */
     saveUserData(username, password, firstName, lastName, address, city, state, zipCode, ssn) {
         cy.writeFile('cypress/fixtures/userData.json', { 

@@ -4,9 +4,9 @@ class AdminPage_PO extends Base_PO {
     dbFormLocator = 'form[name="initializeDB"]';
     jsmFormLocator = 'form[name="toggleJms"]';
     dataAccessModeLocator = '#adminForm > table[class="form"]';
-    webServiceAndApplicationSettingsLocator = '#adminForm > table[class="form2"]'
-    loanProviderDropdown = '#loanProvider'
-    loanProcessorDropdown = '#loanProcessor'
+    webServiceAndApplicationSettingsLocator = '#adminForm > table[class="form2"]';
+    loanProviderDropdown = '#loanProvider';
+    loanProcessorDropdown = '#loanProcessor';
 
     selectLoanProvider(loanProvider) {
         if (loanProvider == 'JMS') {

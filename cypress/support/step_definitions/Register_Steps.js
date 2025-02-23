@@ -64,8 +64,8 @@ When(`I click on the register button`, () => {
 })
 
 Then(`My account should be created`, () => {
-    cy.get('#rightPanel > h1').should('have.text', 'Welcome ' + username);
-    cy.get('#rightPanel > p').should('have.text', 'Your account was created successfully. You are now logged in.')
-    registerPage.saveUserData(username, password, firstName, lastName, address, city, state, zipCode, ssn)
+    cy.get(`${registerPage.rightPanelLocator} > h1`).should('have.text', 'Welcome ' + username);
+    cy.get(`${registerPage.rightPanelLocator} > p`).should('have.text', 'Your account was created successfully. You are now logged in.');
+    registerPage.saveUserData(username, password, firstName, lastName, address, city, state, zipCode, ssn);
 })
 

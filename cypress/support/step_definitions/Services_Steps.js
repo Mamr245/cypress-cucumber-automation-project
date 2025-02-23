@@ -1,4 +1,7 @@
 import { When, Then }  from "@badeball/cypress-cucumber-preprocessor";
+import Base_PO from "../page_objects/Base_PO";
+
+const basePage = new Base_PO();
 
 When(`I can view the available Bookstore services`, () => {
     const bookstoreServices = [
@@ -13,7 +16,7 @@ When(`I can view the available Bookstore services`, () => {
 
     cy.get('span[class="heading"]').contains('Bookstore services:')
     for(const bookstoreService of bookstoreServices) {
-        cy.get('#rightPanel').contains('td', bookstoreService);
+        cy.get(`${basePage.rightPanelLocator}`).contains('td', bookstoreService);
     }
 })
 
@@ -25,7 +28,7 @@ When(`I can view the available ParaBank SOAP services`, () => {
 
     cy.get('span[class="heading"]').contains('Available ParaBank SOAP services:')
     for(const paraBankSOAPservice of paraBankSOAPservices) {
-        cy.get('#rightPanel').contains('span[class="porttypename"]', paraBankSOAPservice);
+        cy.get(`${basePage.rightPanelLocator}`).contains('span[class="porttypename"]', paraBankSOAPservice);
     }
 })
 
@@ -60,25 +63,25 @@ When(`I can view the available ParaBank services`, () => {
 
     cy.get('span[class="heading"]').contains('ParaBank services:')
     for(const parabankService of parabankServices) {
-        cy.get('#rightPanel').contains('td', parabankService);
+        cy.get(`${basePage.rightPanelLocator}`).contains('td', parabankService);
     }
 })
 
 When(`I can view the available RESTful services`, () => {
-    const fields = [
+    const restufulServices = [
         "Endpoint address",
         "WADL",
         "OpenAPI"
     ]
 
     cy.get('span[class="heading"]').contains('Available RESTful services:')
-    for(const field of fields) {
-        cy.get('#rightPanel').contains('span[class="field"]', field);
+    for(const restufulService of restufulServices) {
+        cy.get(`${basePage.rightPanelLocator}`).contains('span[class="field"]', restufulService);
     }
 
     cy.get('span[class="value"]').contains('http://parabank.parasoft.com:8080/parabank/services/bank');
-    cy.get('#rightPanel').contains('a', 'http://parabank.parasoft.com:8080/parabank/services/bank?_wadl&type=xml');
-    cy.get('#rightPanel').contains('a', 'http://parabank.parasoft.com:8080/parabank/api-docs/index.html');
+    cy.get(`${basePage.rightPanelLocator}`).contains('a', 'http://parabank.parasoft.com:8080/parabank/services/bank?_wadl&type=xml');
+    cy.get(`${basePage.rightPanelLocator}`).contains('a', 'http://parabank.parasoft.com:8080/parabank/api-docs/index.html');
 })
 
 Then(`I can view the available Bookstore SOAP services`, () => {
@@ -93,6 +96,6 @@ Then(`I can view the available Bookstore SOAP services`, () => {
 
     cy.get('span[class="heading"]').contains('Available Bookstore SOAP services:')
     for(const bookstoreSOAPservice of bookstoreSOAPservices) {
-        cy.get('#rightPanel').contains('span[class="porttypename"]', bookstoreSOAPservice);
+        cy.get(`${basePage.rightPanelLocator}`).contains('span[class="porttypename"]', bookstoreSOAPservice);
     }
 })

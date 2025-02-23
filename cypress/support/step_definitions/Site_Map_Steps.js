@@ -1,4 +1,7 @@
 import { Then }  from "@badeball/cypress-cucumber-preprocessor";
+import Base_PO from "../page_objects/Base_PO";
+
+const basePage = new Base_PO();
 
 Then(`I can view the ParaBank's website structure`, () => {
     const solutions = [
@@ -21,10 +24,10 @@ Then(`I can view the ParaBank's website structure`, () => {
     ]
 
     for(const solution of solutions) {
-        cy.get('#rightPanel > ul[class="leftmenu"]').contains('a', solution);
+        cy.get(`${basePage.rightPanelLocator} > ul[class="leftmenu"]`).contains('a', solution);
     }
 
     for(const accountService of accountServices) {
-        cy.get('#rightPanel').contains('a', accountService);
+        cy.get(`${basePage.rightPanelLocator}`).contains('a', accountService);
     }
 })

@@ -1,4 +1,4 @@
-Feature: ParaBank - Account Services feature
+Feature: ParaBank - Bill Pay feature
 
     Background: Pre conditions
         Given I navigate to the ParaBank website

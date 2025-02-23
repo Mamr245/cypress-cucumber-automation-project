@@ -13,4 +13,4 @@ class TransferFunds_PO extends Base_PO {
         cy.get('#toAccountId').select(toAccount);
     }
 }
-export default TransferFunds_PO
+export default TransferFunds_PO;

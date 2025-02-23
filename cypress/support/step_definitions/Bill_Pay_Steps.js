@@ -12,8 +12,10 @@ const state = faker.location.state();
 const zipCode = faker.location.zipCode();
 const phoneNumber = faker.phone.number();
 const accountNumber = faker.finance.accountNumber();
-const anotherAccountNumber = faker.finance.accountNumber(); // used to valide mismatching bank accounts scenario
-const billAmount = Math.floor(Math.random() * 51).toFixed(2); // Transfer between 0 and 50$
+// Generate random account number to validate mismatching bank accounts scenario
+const mismatchingAccountNumber = faker.finance.accountNumber(); 
+// Generate random bill value between 0 and 50 with 2 decimal places
+const billAmount = Math.floor(Math.random() * 51).toFixed(2); 
 const invalidAccountNumber = '1nv4l1dAccountNumber'
 
 When(`I type the payee's name`, () => {
@@ -69,7 +71,7 @@ When(`I type an invalid bank account in the confirmation field`, () => {
 })
 
 When(`I type a different bank account in the confirmation field`, () => {
-    billPayPage.typeVerifyAccountNumber(anotherAccountNumber);
+    billPayPage.typeVerifyAccountNumber(mismatchingAccountNumber);
 })
 
 Then(`A success message is shown with the bill payment information`, () => {
@@ -79,4 +81,6 @@ Then(`A success message is shown with the bill payment information`, () => {
     cy.get('#fromAccountId').contains(fromAccount);
 })
 
+/* Export "billAmount" variable to use in the "Find Trasactions - Find By Amount" scenario. 
+This value will be used to validate that only transactions with this value are returned when searching by amount */
 export { billAmount };

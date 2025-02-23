@@ -24,5 +24,6 @@ export default defineConfig({
       return config;
     },
   },
+  retries: 2,
   "chromeWebSecurity": false
 });

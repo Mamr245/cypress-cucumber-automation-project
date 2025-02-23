@@ -1,20 +1,20 @@
 import Base_PO from "./Base_PO";
 
 class UpdateContactInfo_PO extends Base_PO { 
-    firstNameInputLocator = 'input[name="customer.firstName"]'
-    lastNameInputLocator = 'input[name="customer.lastName"]'
-    addressInputLocator = 'input[name="customer.address.street"]'
-    cityInputLocator = 'input[name="customer.address.city"]'
-    stateInputLocator = 'input[name="customer.address.state"]'
-    zipCodeNameInputLocator = 'input[name="customer.address.zipCode"]'
-    phoneNumberNameInputLocator = 'input[name="customer.phoneNumber"]'
+    firstNameInputLocator = 'input[name="customer.firstName"]';
+    lastNameInputLocator = 'input[name="customer.lastName"]';
+    addressInputLocator = 'input[name="customer.address.street"]';
+    cityInputLocator = 'input[name="customer.address.city"]';
+    stateInputLocator = 'input[name="customer.address.state"]';
+    zipCodeNameInputLocator = 'input[name="customer.address.zipCode"]';
+    phoneNumberNameInputLocator = 'input[name="customer.phoneNumber"]';
 
     waitForUserInformationToAppear() {
         /* All user info is shown at once
         Wait until first field (First Name) is not empty
         When the first field isn't empty, it means the remaining user info is being shown too */
         cy.get(this.firstNameInputLocator).invoke('val').should((firstName) => {
-            expect(firstName).to.not.be.empty
+            expect(firstName).to.not.be.empty;
         });
     }
   
@@ -75,7 +75,7 @@ class UpdateContactInfo_PO extends Base_PO {
     }
 
     clickUpdateProfileButton() {
-        cy.get('input[value="Update Profile"]').click()
+        cy.get('input[value="Update Profile"]').click();
     }
 
     validateUserInformation(firstName, lastName, address, city, state, zipCode, phoneNumber) {

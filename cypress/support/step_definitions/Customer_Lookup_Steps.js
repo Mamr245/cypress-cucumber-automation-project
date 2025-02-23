@@ -116,11 +116,11 @@ When(`I type mismatching user information`, () => {
 })
 
 Then(`I can see the user's username and password`, () => {
-    cy.get('#rightPanel > h1').contains('Customer Lookup')
-    cy.get('#rightPanel > p').contains('Your login information was located successfully. You are now logged in.')
+    cy.get(`${customerLookupPage.rightPanelLocator} > h1`).contains('Customer Lookup');
+    cy.get(`${customerLookupPage.rightPanelLocator} > p`).contains('Your login information was located successfully. You are now logged in.');
     
     cy.fixture(customerLookupPage.userData).then((data)  => {
-        cy.get('#rightPanel').contains(data.username)
-        cy.get('#rightPanel').contains(data.password)
+        cy.get(`${customerLookupPage.rightPanelLocator}`).contains(data.username);
+        cy.get(`${customerLookupPage.rightPanelLocator}`).contains(data.password);
     })
 })

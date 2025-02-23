@@ -1,7 +1,8 @@
 import Base_PO from "./Base_PO";
 
 class FindTransactions_PO extends Base_PO { 
-    
+    resultContainerLocator = '#resultContainer';
+
     clickFindTransactionsButton(filter) {
             switch(filter) {
             case 'byId':

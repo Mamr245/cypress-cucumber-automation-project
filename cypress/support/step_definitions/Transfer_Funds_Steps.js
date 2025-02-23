@@ -3,7 +3,9 @@ import { fromAccount, toAccount } from "./Account_Overview_Steps";
 import TransferFunds_PO from "../page_objects/Transfer_Funds_PO";
 
 const transferFundsPage = new TransferFunds_PO();
-var amountToTransfer = Math.floor(Math.random() * 51); // Transfer between 0 and 50$
+
+// Generate random transfer amount between 0 and 50
+var amountToTransfer = Math.floor(Math.random() * 51); 
 
 When(`I type an amount to transfer`, () => {
     transferFundsPage.typeAmountToTransfer(amountToTransfer);

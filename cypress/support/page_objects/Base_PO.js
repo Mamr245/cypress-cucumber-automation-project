@@ -1,15 +1,12 @@
 class Base_PO {
     userData = 'userData.json';
     configFile = 'config.json';
+    rightPanelLocator = '#rightPanel';
 
     navigateToHomepage() {
         cy.fixture(this.configFile).then((data) => {
-            cy.visit(data.baseURL)
+            cy.visit(data.baseURL);
         })
-    }
-
-    getPageTitle() {
-        return cy.title();
     }
 
     generateSSN() {
@@ -48,21 +45,21 @@ class Base_PO {
         const currentDate = new Date();
 
         // Instantiate another date object to avoid mutating the current date object
-        const fromDate = new Date(currentDate);
-        fromDate.setDate(fromDate.getDate() - numberOfdaysToSubtract);
+        const subtractedDate = new Date(currentDate);
+        subtractedDate.setDate(subtractedDate.getDate() - numberOfdaysToSubtract);
 
         // Extract day, month, and year
-        let day = fromDate.getDate();
-        let month = fromDate.getMonth() + 1;
-        let year = fromDate.getFullYear();
+        let day = subtractedDate.getDate();
+        let month = subtractedDate.getMonth() + 1;
+        let year = subtractedDate.getFullYear();
 
         // Add leading zero to day and month if needed
         day = day < 10 ? '0' + day : day;
         month = month < 10 ? '0' + month : month;
 
         // Format the date as dd/mm/yyyy
-        const formattedfromDate= `${month}-${day}-${year}`;
-        return formattedfromDate;
+        const formattedSubtractedDate = `${month}-${day}-${year}`;
+        return formattedSubtractedDate;
     }
 }
 export default Base_PO;

@@ -30,7 +30,7 @@ class CustomerLookup_PO extends Base_PO {
     }
 
     clickFindMyLoginInfo() {
-        cy.get('input[value="Find My Login Info"]').click()
+        cy.get('input[value="Find My Login Info"]').click();
     }
 }
 export default CustomerLookup_PO
