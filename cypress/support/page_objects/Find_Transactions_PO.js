@@ -45,7 +45,7 @@ class FindTransactions_PO extends Base_PO {
     }
 
     clickTransactionLink() {
-        cy.get('a[href*="/parabank/transaction.htm?id"]').click();
+        cy.get('a[href*="/parabank/transaction.htm?id"]').first().click();
     }
 }
 export default FindTransactions_PO;
