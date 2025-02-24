@@ -28,5 +28,9 @@ class AccountOverview_PO extends Base_PO {
     clickFindTransactionsLink() {
         cy.get('a[href*="findtrans"]').click();
     }
+
+    clickRequestLoanLink() {
+        cy.get('a[href*="requestloan"]').click();
+    }
 }
 export default AccountOverview_PO;

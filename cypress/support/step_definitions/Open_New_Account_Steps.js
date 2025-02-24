@@ -29,7 +29,7 @@ Then(`A success message and my new account number are shown`, () => {
     cy.get('#openAccountResult').contains('Congratulations, your account is now open.');
     cy.get('#openAccountResult').contains('Your new account number:');
     cy.get('a[href*="id="').invoke('text').then((generatedAccountNumber) => {
-        assert(parseInt(generatedAccountNumber), "Value isn't an integer!");
+        assert(parseInt(generatedAccountNumber), "Value is an integer");
         newAccountNumber = generatedAccountNumber;
     })
 })

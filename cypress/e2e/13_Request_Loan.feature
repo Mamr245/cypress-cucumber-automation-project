@@ -8,15 +8,17 @@ Feature: ParaBank - Request Loan feature
         And I click on the Request Loan link
 
     Scenario Outline: Valid Loans
-        And I type the loan amount '<loan amount>'
-        And I type the down payment amount '<down payment amount>'
-        And I select a from account
+        And I type the loan amount: '<loan amount>'
+        And I type the down payment amount: '<down payment amount>'
+        And I select an account for the down payment
         And I click the Apply Now button
         Then The loan is approved
         And I can see the created account in the Account Overview
         And It has the correct amount of money
+        And The account for the down payment has the right amount deducted
 
         Examples:
             | loan amount | down payment amount |
-            | 100         | 50                  |
-            | 50          | 0                   |
+            | 2.00        | 1.00                |
+            | 50.00       | 0.00                |
+            | 12.50       | 2.75                |
