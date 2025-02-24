@@ -16,6 +16,4 @@ jobs:
         uses: cypress-io/github-action@v6.7.12
         with:
           install-command: npm install --force
-          #build: npm run build
-          #start: npx cypress run
           browser: chrome
