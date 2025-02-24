@@ -17,3 +17,9 @@ jobs:
         with:
           install-command: npm install --force
           browser: chrome
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
