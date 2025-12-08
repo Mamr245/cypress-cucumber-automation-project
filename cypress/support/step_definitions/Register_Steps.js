@@ -52,6 +52,7 @@ When(`I click on the register button`, () => {
 })
 
 Then(`My account should be created`, () => {
+    cy.title().should('eq', 'ParaBank | Customer Created');
     cy.get(`${registerPage.rightPanelLocator} > h1`).should('have.text', 'Welcome ' + registerPage.clientUsername);
     cy.get(`${registerPage.rightPanelLocator} > p`).should('have.text', 'Your account was created successfully. You are now logged in.');
     registerPage.saveUserData(registerPage.clientUsername, registerPage.clientPassword, registerPage.clientFirstName, registerPage.clientLastName, 
