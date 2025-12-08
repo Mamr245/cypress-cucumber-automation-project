@@ -17,6 +17,11 @@ jobs:
         with:
           install-command: npm install --force
           browser: chrome
+          spec: |
+            cypress/e2e/01_Header_Panel.feature,
+            cypress/e2e/02_Footer_Panel.feature,
+            cypress/e2e/03_Customer_Care.feature,
+            cypress/e2e/04_Register_New_User.feature
       - name: Upload screenshots
         uses: actions/upload-artifact@v4
         if: always()
