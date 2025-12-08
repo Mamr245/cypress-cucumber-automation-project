@@ -1,6 +1,6 @@
 <h1 align="center">Cypress and Cucumber Automation Project :computer:</h1> 
 
-### :question: What is it about?
+### :question: What is this?
 This project contains automated tests performed on https://parabank.parasoft.com/parabank/index.htm. 
 It allowed me to get my hands dirty with Cypress and Cucumber preprocessor to implement Behavior-Driven Testing (BDT).
 The goal was to apply what I learned during the course [Cypress with Cucumber BDD - Automation Testing Bootcamp](https://www.udemy.com/course/cypress-with-cucumber-bdd-beginner-to-expert-in-9-hours).
