@@ -4,6 +4,13 @@ import Base_PO from "../page_objects/Base_PO";
 const basePage = new Base_PO();
 
 Then(`I am presented with information about ParaBank`, () => {
+    // Code to avoid test from failling because of unrelated errors to the system under testing
+    cy.origin('https://www.parasoft.com', () => {
+        cy.on('uncaught:exception', (e) => {
+            return false
+        })
+    })
+
     cy.get(`${basePage.rightPanelLocator} > h1`).should('have.text', 'ParaSoft Demo Website');
     cy.get(`${basePage.rightPanelLocator}`).contains('ParaBank is a demo site used for demonstration of Parasoft software solutions.');
     cy.get(`${basePage.rightPanelLocator}`).contains('All materials herein are used solely for simulating a realistic online banking website.');
