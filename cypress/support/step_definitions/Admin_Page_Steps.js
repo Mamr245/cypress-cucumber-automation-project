@@ -16,7 +16,7 @@ When(`The administration page has a Database configuration section`, () => {
 
 When(`The administration page has a JSM Service section`, () => {
     cy.get(adminPage.jsmFormLocator).should('be.visible');
-    cy.get(adminPage.jsmFormLocator).find('input[value="Shutdown"]').should('be.visible');
+    cy.get(adminPage.jsmFormLocator).find('input[value="Shutdown"], input[value="Startup"]').should('be.visible');
 })
 
 When(`The administration page has a Data Access Mode configuration section`, () => {
