@@ -11,7 +11,7 @@ class Register_PO extends Base_PO {
     clientZipCode = faker.location.zipCode();
     clientPhoneNumber = faker.phone.number();
     clientSSN= super.generateSSN();
-    clientUsername = faker.internet.username();
+    clientUsername = `${faker.internet.username()}_${Date.now().toString().slice(-5)}`
     clientPassword = faker.internet.password();
 
     typeFirstName(firstName) {
