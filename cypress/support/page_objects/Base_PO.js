@@ -1,27 +1,12 @@
+import configFile from '../../fixtures/config.json';
+
 class Base_PO {
-    userData = 'userData.json';
-    configFile = 'config.json';
     rightPanelLocator = '#rightPanel';
+    homePageURL = configFile.homePageURL;
 
     navigateToHomepage() {
-        cy.fixture(this.configFile).then((data) => {
-            cy.visit(data.baseURL);
-        })
+        cy.visit(this.homePageURL);
     }
-
-    generateSSN() {
-        const firstThreeDigits = this.getRandomIntInclusive(100, 999).toString();
-        const middleDigits = this.getRandomIntInclusive(10, 99).toString();
-        const lastFourDigits = this.getRandomIntInclusive(1000, 9999).toString();
-        const ssn = firstThreeDigits + "-" + middleDigits + "-" + lastFourDigits;
-        return ssn;
-    }
-
-    getRandomIntInclusive(min, max) {
-        const minCeiled = Math.ceil(min);
-        const maxFloored = Math.floor(max);
-        return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
-      }
 
     selectFromAccount(fromAccount) {
         cy.get('#fromAccountId').select(fromAccount);

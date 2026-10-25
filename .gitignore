@@ -1,4 +1,7 @@
 node_modules
 reports
-userData.json
 screenshots
+clientData.json
+updatedClientData.json
+customerCareData.json
+transferFundsData.json

@@ -1,57 +1,45 @@
 import { When, Then }  from "@badeball/cypress-cucumber-preprocessor";
-import { faker } from '@faker-js/faker';
 import { fromAccount } from "./Account_Overview_Steps";
 import BillPay_PO from "../page_objects/Bill_Pay_PO";
+import transferFundsData from "../../fixtures/transferFundsData.json";
 
 const billPayPage = new BillPay_PO();
-
-const name = faker.person.fullName();
-const address = faker.location.street();
-const city = faker.location.city();
-const state = faker.location.state();
-const zipCode = faker.location.zipCode();
-const phoneNumber = faker.phone.number();
-const accountNumber = faker.finance.accountNumber();
-// Generate random account number to validate mismatching bank accounts scenario
-const mismatchingAccountNumber = faker.finance.accountNumber(); 
-// Generate random bill value between 0 and 50 with 2 decimal places
-const billAmount = Math.floor(Math.random() * 51).toFixed(2); 
-const invalidAccountNumber = '1nv4l1dAccountNumber'
+const mismatchingAccountNumber = '1234567';
 
 When(`I type the payee's name`, () => {
-    billPayPage.typeName(name);
+    billPayPage.typeName(transferFundsData.name);
 })
 
 When(`I type the payee's address`, () => {
-    billPayPage.typeAddress(address);
+    billPayPage.typeAddress(transferFundsData.address);
 })
 
 When(`I type the payee's city`, () => {
-    billPayPage.typeCity(city);
+    billPayPage.typeCity(transferFundsData.city);
 })
 
 When(`I type the payee's state`, () => {
-    billPayPage.typeState(state);
+    billPayPage.typeState(transferFundsData.state);
 })
 
 When(`I type the payee's zip code`, () => {
-    billPayPage.typeZipCode(zipCode);
+    billPayPage.typeZipCode(transferFundsData.zipCode);
 })
 
 When(`I type the payee's phone number`, () => {
-    billPayPage.typePhoneNumber(phoneNumber);
+    billPayPage.typePhoneNumber(transferFundsData.phoneNumber);
 })
 
 When(`I type the payee's bank account`, () => {
-    billPayPage.typeAccountNumber(accountNumber);
+    billPayPage.typeAccountNumber(transferFundsData.accountNumber);
 })
 
 When(`I confirm the payee's bank account`, () => {
-    billPayPage.typeVerifyAccountNumber(accountNumber);
+    billPayPage.typeVerifyAccountNumber(transferFundsData.accountNumber);
 })
 
 When(`I type the amount to be transfered`, () => {
-    billPayPage.typeAmount(billAmount);
+    billPayPage.typeAmount(transferFundsData.billAmount);
 })
 
 When(`I select an account from which to pay the bill`, () => {
@@ -63,11 +51,11 @@ When(`I click the Send Payment Button`, () => {
 })
 
 When(`I type an invalid bank account`, () => {
-    billPayPage.typeAccountNumber(invalidAccountNumber);
+    billPayPage.typeAccountNumber('1nv4l1dAccountNumber');
 })
 
 When(`I type an invalid bank account in the confirmation field`, () => {
-    billPayPage.typeVerifyAccountNumber(invalidAccountNumber);
+    billPayPage.typeVerifyAccountNumber('1nv4l1dAccountNumber');
 })
 
 When(`I type a different bank account in the confirmation field`, () => {
@@ -76,11 +64,7 @@ When(`I type a different bank account in the confirmation field`, () => {
 
 Then(`A success message is shown with the bill payment information`, () => {
     cy.get('#billpayResult > h1').should('have.text', 'Bill Payment Complete');
-    cy.get('#payeeName').contains(name); 
-    cy.get('#amount').contains(`$${billAmount}`);
+    cy.get('#payeeName').contains(transferFundsData.name); 
+    cy.get('#amount').contains(`$${transferFundsData.billAmount}`);
     cy.get('#fromAccountId').contains(fromAccount);
 })
-
-/* Export "billAmount" variable to use in the "Find Trasactions - Find By Amount" scenario. 
-This value will be used to validate that only transactions with this value are returned when searching by amount */
-export { billAmount };

@@ -1,9 +1,10 @@
 import { When, Then }  from "@badeball/cypress-cucumber-preprocessor";
 import { newAccountNumber } from "./Open_New_Account_Steps";
 import { amountToTransfer } from "./Transfer_Funds_Steps";
-import { billAmount } from "./Bill_Pay_Steps";
 import { loanAccountNumber, loanAmountToValidate, downPaymentAmountToValidate } from "./Request_Loan_Steps";
 import AccountOverview_PO from "../page_objects/Account_Overview_PO";
+import clientData from "../../fixtures/clientData.json";
+import transferFundsData from "../../fixtures/transferFundsData.json";
 
 const accountOverviewPage = new AccountOverview_PO();
 
@@ -120,7 +121,7 @@ When(`The updated account values are shown in the account overview`, () => {
 })
 
 When(`The paid amount is removed from the used account`, () => {
-    const fromAccountFinalAmount = fromAccountInitialAmount - billAmount;
+    const fromAccountFinalAmount = fromAccountInitialAmount - transferFundsData.billAmount;
     accountOverviewPage.clickAccountsOverviewLink();
     cy.get(`a[href*="${fromAccount}"]`).parent().siblings().first().should('have.text', `$${fromAccountFinalAmount.toFixed(2)}`);
 })
@@ -141,10 +142,8 @@ When(`The account for the down payment has the right amount deducted`, () => {
 })
 
 Then(`I should be able to access my account`, () => {
-    cy.fixture(accountOverviewPage.userData).then((data)  => {
         cy.get('#leftPanel > p').contains('Welcome');
-        cy.get('#leftPanel > p').contains(data.firstName + ' ' + data.lastName);
-    })
+        cy.get('#leftPanel > p').contains(clientData.firstname + ' ' + clientData.lastname);
 })
 
 export { checkingAccountNumber, fromAccount, toAccount };

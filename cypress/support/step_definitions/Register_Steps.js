@@ -1,50 +1,51 @@
 import { When, Then }  from "@badeball/cypress-cucumber-preprocessor";
 import Register_PO from "../page_objects/Register_PO";
+import clientData from "../../fixtures/clientData.json";
 
 const registerPage = new Register_PO();
 
 When(`I type a first name`, () => {
-    registerPage.typeFirstName(registerPage.clientFirstName);
+    registerPage.typeFirstName(clientData.firstname);
 })
 
 When(`I type a last name`, () => {
-    registerPage.typeLastName(registerPage.clientLastName);
+    registerPage.typeLastName(clientData.lastname);
 })
 
 When(`I type an address`, () => {
-    registerPage.typeAddress(registerPage.clientAddress);
+    registerPage.typeAddress(clientData.address);
 })
 
 When(`I type a city`, () => {
-    registerPage.typeCity(registerPage.clientCity);
+    registerPage.typeCity(clientData.city);
 })
 
 When(`I type a state`, () => {
-    registerPage.typeState(registerPage.clientState);
+    registerPage.typeState(clientData.state);
 })
 
 When(`I type a zip code`, () => {
-    registerPage.typeZipCode(registerPage.clientZipCode);
+    registerPage.typeZipCode(clientData.zipCode);
 })
 
 When(`I type a phone number`, () => {
-    registerPage.typePhoneNumber(registerPage.clientPhoneNumber);
+    registerPage.typePhoneNumber(clientData.phoneNumber);
 })
 
 When(`I type a social security number`, () => {
-    registerPage.typeSSN(registerPage.clientSSN);
+    registerPage.typeSSN(clientData.SSN);
 })
 
 When(`I type a username`, () => {
-    registerPage.typeUsername(registerPage.clientUsername);
+    registerPage.typeUsername(clientData.username);
 })
 
 When(`I type a password`, () => {
-    registerPage.typePassword(registerPage.clientPassword);
+    registerPage.typePassword(clientData.password);
 })
 
 When(`I confirm the password`, () => {
-    registerPage.repeatPassword(registerPage.clientPassword);
+    registerPage.repeatPassword(clientData.password);
 })
 
 When(`I click on the register button`, () => {
@@ -53,9 +54,7 @@ When(`I click on the register button`, () => {
 
 Then(`My account should be created`, () => {
     cy.title().should('eq', 'ParaBank | Customer Created');
-    cy.get(`${registerPage.rightPanelLocator} > h1`).should('have.text', 'Welcome ' + registerPage.clientUsername);
+    cy.get(`${registerPage.rightPanelLocator} > h1`).should('have.text', 'Welcome ' + clientData.username);
     cy.get(`${registerPage.rightPanelLocator} > p`).should('have.text', 'Your account was created successfully. You are now logged in.');
-    registerPage.saveUserData(registerPage.clientUsername, registerPage.clientPassword, registerPage.clientFirstName, registerPage.clientLastName, 
-        registerPage.clientAddress, registerPage.clientCity, registerPage.clientState, registerPage.clientZipCode, registerPage.clientSSN);
 })
 

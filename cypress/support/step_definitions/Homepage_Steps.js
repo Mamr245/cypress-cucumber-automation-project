@@ -1,5 +1,6 @@
 import { Given, When, Then }  from "@badeball/cypress-cucumber-preprocessor";
 import Homepage_PO from "../page_objects/Homepage_PO";
+import clientData from "../../fixtures/clientData.json";
 
 const homePage = new Homepage_PO();
 
@@ -84,9 +85,7 @@ When(`I click on the Log In button`, () => {
 })
 
 When(`I type a valid username`, () => {
-    cy.fixture(homePage.userData).then((data)  => {
-        homePage.typeUsername(data.username);
-    })
+    homePage.typeUsername(clientData.username);
 })
 
 When(`I type an invalid username`, () => {
@@ -94,9 +93,7 @@ When(`I type an invalid username`, () => {
 })
 
 When(`I type a valid password`, () => {
-    cy.fixture(homePage.userData).then((data)  => {
-        homePage.typePassword(data.password);
-    })
+    homePage.typePassword(clientData.password);
 })
 
 When(`I type an invalid password`, () => {
@@ -104,9 +101,7 @@ When(`I type an invalid password`, () => {
 })
 
 Then(`I should be logged out`, () => {
-    cy.fixture(homePage.configFile).then((data) => {
-        cy.url().should('include', data.baseURL);
-    })
+    cy.url().should('include', homePage.homePageURL);
 })
 
 Then(`I am redirected to ParaBank's products website`, () => {
@@ -118,9 +113,7 @@ Then(`I am redirected to ParaBank's solutions website`, () => {
 })
 
 Then(`I am redirected back to the main page`, () => {
-    cy.fixture(homePage.configFile).then((data) => {
-        cy.url().should('include', data.baseURL);
-    })
+    cy.url().should('include', homePage.homePageURL);
 })
 
 Then(`I am redirected to Parasoft's website`, () => {

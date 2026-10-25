@@ -1,18 +1,6 @@
 import Base_PO from "./Base_PO";
-import { faker } from '@faker-js/faker';
 
 class Register_PO extends Base_PO {
-
-    clientFirstName = faker.person.firstName();
-    clientLastName = faker.person.lastName();
-    clientAddress = faker.location.street();
-    clientCity = faker.location.city();
-    clientState = faker.location.state();
-    clientZipCode = faker.location.zipCode();
-    clientPhoneNumber = faker.phone.number();
-    clientSSN= super.generateSSN();
-    clientUsername = `${faker.internet.username().toString().slice(-5)}_${Date.now().toString().slice(-5)}`
-    clientPassword = faker.internet.password();
 
     typeFirstName(firstName) {
         cy.get('input[name="customer.firstName"]').type(firstName);
@@ -60,23 +48,6 @@ class Register_PO extends Base_PO {
 
     clickRegisterButton() {
         cy.get('input[value="Register"]').click();
-    }
-
-    /* Workaround because demo site does not save credentials
-    We save the defined credentials into a file while creating an account and read that file when performing the login tests
-    */
-    saveUserData(username, password, firstName, lastName, address, city, state, zipCode, ssn) {
-        cy.writeFile('cypress/fixtures/userData.json', { 
-            username: username, 
-            password: password, 
-            firstName: firstName, 
-            lastName: lastName,
-            address: address,
-            city: city,
-            state: state,
-            zipCode: zipCode,
-            SSN: ssn
-         })
     }
 }
 export default Register_PO;
