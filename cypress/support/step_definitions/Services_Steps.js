@@ -68,20 +68,20 @@ When(`I can view the available ParaBank services`, () => {
 })
 
 When(`I can view the available RESTful services`, () => {
-    const restufulServices = [
+    const restfulServices = [
         "Endpoint address",
         "WADL",
         "OpenAPI"
     ]
 
     cy.get('span[class="heading"]').contains('Available RESTful services:')
-    for(const restufulService of restufulServices) {
-        cy.get(`${basePage.rightPanelLocator}`).contains('span[class="field"]', restufulService);
+    for(const restfulService of restfulServices) {
+        cy.get(`${basePage.rightPanelLocator}`).contains('span[class="field"]', restfulService);
     }
 
-    cy.get('span[class="value"]').contains('http://parabank.parasoft.com:8080/parabank/services/bank');
-    cy.get(`${basePage.rightPanelLocator}`).contains('a', 'http://parabank.parasoft.com:8080/parabank/services/bank?_wadl&type=xml');
-    cy.get(`${basePage.rightPanelLocator}`).contains('a', 'http://parabank.parasoft.com:8080/parabank/api-docs/index.html');
+    cy.xpath(`//td/span[@class="value" and contains(text(), "https://parabank.parasoft.com/parabank/services/bank")]`);
+    cy.get(`${basePage.rightPanelLocator}`).contains('a', 'https://parabank.parasoft.com/parabank/services/bank?_wadl&type=xml');
+    cy.get(`${basePage.rightPanelLocator}`).contains('a', 'https://parabank.parasoft.com/parabank/api-docs/index.html');
 })
 
 Then(`I can view the available Bookstore SOAP services`, () => {

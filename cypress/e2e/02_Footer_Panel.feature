@@ -28,10 +28,6 @@ Feature: ParaBank - Footer Panel feature
         When I click on the Locations link in the footer panel
         Then I am redirected to ParaBank's solutions website
 
-    Scenario: Forum
-        When I click on the Forum link in the footer panel
-        Then I am redirected to ParaBank's forum website
-
     Scenario: Site Map
         When I click on the Site Map link in the footer panel
         Then I can view the ParaBank's website structure

@@ -1,11 +1,14 @@
 import { defineConfig } from "cypress";
-import * as createBundler from "@bahmutov/cypress-esbuild-preprocessor";
+import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
 import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
 import { createEsbuildPlugin } from "@badeball/cypress-cucumber-preprocessor/esbuild";
 
 export default defineConfig({
   e2e: {
-    specPattern: "**/*.feature",
+    specPattern: [
+      'cypress/e2e/**/*.feature',
+      'cypress/e2e/**/*.cy.ts',
+    ],
     async setupNodeEvents(
       on: Cypress.PluginEvents,
       config: Cypress.PluginConfigOptions
@@ -24,6 +27,6 @@ export default defineConfig({
       return config;
     },
   },
-  retries: 2,
+  retries: 1,
   "chromeWebSecurity": false
 });
