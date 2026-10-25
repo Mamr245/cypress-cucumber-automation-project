@@ -1,4 +1,5 @@
 name: End-2-End tests
+
 on:
   push:
     branches: [ main ]
@@ -7,25 +8,36 @@ on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
+
 jobs:
   cypress-run:
     runs-on: ubuntu-24.04
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Cypress run
+
+      # Step 1: Run setup.cy.ts first
+      - name: Run Setup
         uses: cypress-io/github-action@v6.7.12
         with:
           install-command: npm install --force
           browser: chrome
-          spec: |
-            cypress/e2e/01_Header_Panel.feature
-            cypress/e2e/02_Footer_Panel.feature
-            cypress/e2e/03_Customer_Care.feature
-            cypress/e2e/04_Register_New_User.feature
+          spec: cypress/e2e/setup.cy.ts
+
+      # Step 2: Run all feature files
+      - name: Run All Feature Files
+        uses: cypress-io/github-action@v6.7.12
+        with:
+          install: false
+          browser: chrome
+          spec: 'cypress/e2e/*.feature'
+
+      # Step 3: Upload screenshots
       - name: Upload screenshots
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
+          if-no-files-found: ignore
